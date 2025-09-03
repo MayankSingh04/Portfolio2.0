@@ -32,8 +32,15 @@ const Hero = () => {
     downloadResume()
   }
 
+  const scrollToProjects = () => {
+    const projectsSection = document.querySelector('#projects')
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
+    <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {floatingIcons.map((item, index) => (
@@ -102,14 +109,19 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button variant="default" size="lg" className="group bg-primary hover:bg-primary/90 glow-effect">
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="group bg-primary hover:bg-primary/90 glow-effect w-full sm:w-auto min-h-[48px] px-8"
+              onClick={scrollToProjects}
+            >
               <span>View Projects</span>
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="group border-border hover:bg-accent"
+              className="group border-border hover:bg-accent w-full sm:w-auto min-h-[48px] px-8"
               onClick={handleResumeDownload}
             >
               <Download className="mr-2 h-4 w-4" />
@@ -122,19 +134,39 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="flex flex-wrap justify-center gap-4 text-sm font-body text-muted-foreground"
+            className="flex flex-wrap justify-center gap-6 text-sm font-body"
           >
-            <div className="flex items-center space-x-2">
-              <Phone className="h-4 w-4 text-primary" />
-              <span>9012176321</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="h-4 w-4 text-primary" />
-              <span>mayanksinghdhami7@gmail.com</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <span>📍 Haldwani, India</span>
-            </div>
+            <motion.div 
+              className="flex items-center space-x-2 group cursor-pointer hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -2 }}
+              onClick={() => window.open('tel:9012176321', '_blank')}
+            >
+              <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                <Phone className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <span className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">9012176321</span>
+            </motion.div>
+            
+            <motion.div 
+              className="flex items-center space-x-2 group cursor-pointer hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -2 }}
+              onClick={() => window.open('mailto:mayanksinghdhami7@gmail.com', '_blank')}
+            >
+              <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                <Mail className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <span className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">mayanksinghdhami7@gmail.com</span>
+            </motion.div>
+            
+            <motion.div 
+              className="flex items-center space-x-2 group cursor-pointer hover:scale-105 transition-all duration-300"
+              whileHover={{ y: -2 }}
+            >
+              <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                <span className="text-primary text-lg group-hover:scale-110 transition-transform duration-300">📍</span>
+              </div>
+              <span className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">Haldwani, India</span>
+            </motion.div>
           </motion.div>
 
           {/* Social Links */}

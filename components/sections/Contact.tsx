@@ -102,36 +102,20 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="relative py-16 bg-background overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ 
-            duration: 20, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ 
-            rotate: -360,
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ 
-            duration: 25, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-accent/10 to-transparent rounded-full blur-3xl"
-        />
+    <section id="contact" className="py-20 bg-gradient-to-b from-secondary/20 to-background relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-gradient-to-l from-primary/20 via-transparent to-primary/20 transform -rotate-12 scale-150"></div>
       </div>
 
-      <div ref={containerRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Animated Wave Divider at Top */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+        <svg className="relative block w-full h-8" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" className="fill-current text-background"></path>
+        </svg>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <motion.div
           ref={ref}
@@ -151,25 +135,6 @@ const Contact = () => {
               Let's Connect
             </Badge>
           </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-6xl font-orbitron font-bold text-foreground mb-6"
-          >
-            Looking for <span className="gradient-text">Opportunities</span>?
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl font-space text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-          >
-            I'm a Cloud Engineer seeking full-time opportunities in cloud infrastructure, DevOps, and AI integration. 
-            Whether you have a role to offer or want to discuss technology - I'm excited to connect!
-          </motion.p>
         </motion.div>
 
         {/* Contact Methods Grid */}
@@ -189,32 +154,32 @@ const Contact = () => {
                 transition: { duration: 0.3 }
               }}
             >
-              <Card className="cloud-card h-full group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-card to-card/80 backdrop-blur-sm">
+              <Card className="glass-panel h-full group hover:shadow-3xl transition-all duration-500 border border-white/20 overflow-hidden cursor-pointer">
                 <CardContent className="p-6 relative overflow-hidden">
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                  {/* Enhanced Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                   
-                  {/* Icon */}
+                  {/* Enhanced Icon with Better Styling */}
                   <motion.div
-                    whileHover={{ rotate: 360 }}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className={`p-3 rounded-2xl bg-gradient-to-br ${method.color} w-14 h-14 flex items-center justify-center mb-4 relative z-10`}
+                    className={`p-4 rounded-2xl bg-gradient-to-br ${method.color} w-16 h-16 flex items-center justify-center mb-5 relative z-10 shadow-xl group-hover:shadow-2xl transition-all duration-300`}
                   >
-                    <method.icon className="h-7 w-7 text-white" />
+                    <method.icon className="h-8 w-8 text-white" />
                   </motion.div>
                   
-                  {/* Content */}
+                  {/* Enhanced Content */}
                   <div className="relative z-10">
-                    <h3 className="text-lg font-orbitron font-semibold text-foreground mb-2">
+                    <h3 className="text-xl font-orbitron font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                       {method.title}
                     </h3>
-                    <p className="text-muted-foreground font-body mb-4 text-base">
+                    <p className="text-foreground font-body mb-5 text-base font-semibold group-hover:text-primary/90 transition-colors duration-300 leading-relaxed">
                       {method.value}
                     </p>
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="w-full border-primary/20 hover:bg-primary hover:text-white transition-all duration-300 group/btn"
+                      className="w-full border-white/30 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group/btn backdrop-blur-sm font-medium py-2"
                       onClick={() => window.open(method.href, '_blank')}
                     >
                       <span>{method.action}</span>
@@ -227,146 +192,118 @@ const Contact = () => {
           ))}
         </motion.div>
 
-        {/* Social Media Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-foreground mb-3">
-              Connect on <span className="gradient-text">Social Media</span>
-            </h3>
-            <p className="text-base font-space text-muted-foreground max-w-2xl mx-auto">
-              Follow me for cloud engineering insights, AI updates, and tech discussions
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {socialLinks.map((social, index) => (
-              <motion.div
-                key={social.name}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{ delay: social.delay, duration: 0.8, type: "spring" }}
-                whileHover={{ 
-                  y: -15,
-                  scale: 1.05,
-                  transition: { duration: 0.3 }
-                }}
-                className="group cursor-pointer"
-              >
-                <Card className="cloud-card h-full hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-card to-card/80 backdrop-blur-sm overflow-hidden">
-                  <CardContent className="p-6 text-center relative">
-                    {/* Animated Background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                    
-                    {/* Icon Container */}
-                    <motion.div
-                      whileHover={{ 
-                        scale: 1.1,
-                        rotate: [0, -10, 10, 0]
-                      }}
-                      transition={{ duration: 0.6 }}
-                      className={`p-3 rounded-full bg-gradient-to-br ${social.color} w-16 h-16 mx-auto mb-4 relative z-10 flex items-center justify-center`}
+        {/* Social Links with Enhanced Glassmorphism */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {socialLinks.map((social, index) => (
+            <motion.div
+              key={social.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
+              <Card className="glass-panel h-full border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden group">
+                <CardContent className="p-6 relative">
+                  {/* Background Icon */}
+                  <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                    <social.icon className="h-16 w-16 text-primary" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h4 className="text-lg font-orbitron font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                      {social.name}
+                    </h4>
+                    <p className="text-muted-foreground font-body text-sm mb-4">
+                      {social.description}
+                    </p>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full border-white/20 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group/btn backdrop-blur-sm"
+                      onClick={() => window.open(social.href, '_blank')}
                     >
-                      {social.name === "X (Twitter)" ? (
-                        <svg className="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                      ) : (
-                        <social.icon className="h-8 w-8 text-white" />
-                      )}
-                    </motion.div>
-                    
-                    {/* Content */}
-                    <div className="relative z-10">
-                      <h4 className="text-lg font-orbitron font-semibold text-foreground mb-2">
-                        {social.name}
-                      </h4>
-                      <p className="text-muted-foreground font-body text-sm mb-4">
-                        {social.description}
-                      </p>
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="w-full border-primary/20 hover:bg-primary hover:text-white transition-all duration-300 group/btn"
-                        onClick={() => window.open(social.href, '_blank')}
-                      >
-                        <Globe className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
-                        <span>Visit Profile</span>
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                      <Globe className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform duration-300" />
+                      <span>Visit Profile</span>
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
 
-        {/* Resume Download Section */}
+        {/* Resume Download Section with Glassmorphism */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.9, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-3xl p-8 border border-primary/20 backdrop-blur-sm relative overflow-hidden">
-            {/* Floating Elements */}
-            <motion.div
-              animate={{ 
-                y: [0, -10, 0],
-                rotate: [0, 5, 0]
-              }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute top-6 left-8 text-primary/30"
-            >
-              <Star className="h-6 w-6" />
-            </motion.div>
-            <motion.div
-              animate={{ 
-                y: [0, 10, 0],
-                rotate: [0, -5, 0]
-              }}
-              transition={{ 
-                duration: 5, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute top-8 right-12 text-accent/30"
-            >
-              <Zap className="h-6 w-6" />
-            </motion.div>
+          <div className="glass-panel rounded-2xl p-8 border border-white/20 shadow-2xl max-w-3xl mx-auto">
+            <h3 className="text-2xl font-orbitron font-bold text-foreground mb-4">
+              Ready to Collaborate?
+            </h3>
+            <p className="text-foreground font-body mb-6 leading-relaxed">
+              I'm actively seeking opportunities to work with innovative teams on cloud infrastructure and AI-powered solutions. 
+              Let's discuss how we can build something amazing together.
+            </p>
             
-            <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-foreground mb-4">
-                Get My <span className="gradient-text">Resume</span>
-              </h3>
-              <p className="text-base font-space text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Download my detailed resume to learn more about my cloud engineering experience, 
-                technical skills, and project portfolio.
-              </p>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            {/* Enhanced Contact Info Display */}
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <motion.div 
+                className="flex flex-col items-center space-y-2 group cursor-pointer hover:scale-105 transition-all duration-300"
+                whileHover={{ y: -2 }}
+                onClick={() => window.open('mailto:mayanksinghdhami7@gmail.com', '_blank')}
               >
-                <Button 
-                  variant="default" 
-                  size="lg" 
-                  className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white px-6 py-3 text-base font-space font-semibold shadow-2xl hover:shadow-primary/25 transition-all duration-300"
-                  onClick={handleResumeDownload}
-                >
-                  <Download className="h-4 w-4 mr-2" />
-                  Download Resume (PDF)
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                  <Mail className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <span className="text-sm text-foreground font-medium group-hover:text-primary transition-colors duration-300">Email</span>
               </motion.div>
+              
+              <motion.div 
+                className="flex flex-col items-center space-y-2 group cursor-pointer hover:scale-105 transition-all duration-300"
+                whileHover={{ y: -2 }}
+                onClick={() => window.open('tel:+919012176321', '_blank')}
+              >
+                <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                  <Phone className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <span className="text-sm text-foreground font-medium group-hover:text-primary transition-colors duration-300">Phone</span>
+              </motion.div>
+              
+              <motion.div 
+                className="flex flex-col items-center space-y-2 group cursor-pointer hover:scale-105 transition-all duration-300"
+                whileHover={{ y: -2 }}
+              >
+                <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                  <span className="text-primary text-lg group-hover:scale-110 transition-transform duration-300">📍</span>
+                </div>
+                <span className="text-sm text-foreground font-medium group-hover:text-primary transition-colors duration-300">Location</span>
+              </motion.div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 glow-effect group"
+                onClick={handleResumeDownload}
+              >
+                <Download className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                Download Resume
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-white/20 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 backdrop-blur-sm"
+                onClick={() => window.open('mailto:mayanksinghdhami7@gmail.com', '_blank')}
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Get in Touch
+              </Button>
             </div>
           </div>
         </motion.div>

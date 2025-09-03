@@ -57,7 +57,22 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Professional color scheme
+        cloud: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+        },
+        aws: {
+          orange: '#FF9900',
+          blue: '#232F3E'
+        },
         slate: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -69,11 +84,7 @@ module.exports = {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
-        },
-        // AWS colors for cloud focus
-        aws: {
-          orange: '#FF9900',
-          blue: '#232F3E',
+          950: '#020617',
         }
       },
       borderRadius: {
@@ -83,37 +94,46 @@ module.exports = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: 0 },
+          from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
+          to: { height: "0" },
         },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "pulse-slow": {
-          "0%, 100%": { opacity: 1 },
-          "50%": { opacity: 0.5 },
-        },
-        "glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(59, 130, 246, 0.1)" },
-          "50%": { boxShadow: "0 0 30px rgba(59, 130, 246, 0.3)" },
+        glow: {
+          "0%, 100%": { boxShadow: "0 0 20px rgba(14, 165, 233, 0.3)" },
+          "50%": { boxShadow: "0 0 30px rgba(14, 165, 233, 0.6), 0 0 40px rgba(14, 165, 233, 0.3)" },
         },
         "dark-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(147, 51, 234, 0.15)" },
-          "50%": { boxShadow: "0 0 30px rgba(147, 51, 234, 0.25)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(14, 165, 233, 0.2)" },
+          "50%": { boxShadow: "0 0 30px rgba(14, 165, 233, 0.4), 0 0 40px rgba(14, 165, 233, 0.2)" },
+        },
+        "gradient-shift": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "33%": { transform: "translateY(-20px) rotate(2deg)" },
+          "66%": { transform: "translateY(-10px) rotate(-2deg)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float": "float 3s ease-in-out infinite",
-        "pulse-slow": "pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "glow": "glow 2s ease-in-out infinite",
+        glow: "glow 2s ease-in-out infinite",
         "dark-glow": "dark-glow 2s ease-in-out infinite",
+        "gradient-slow": "gradient-shift 15s ease infinite",
+        float: "float 6s ease-in-out infinite",
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      boxShadow: {
+        '3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
+        '4xl': '0 45px 80px -12px rgba(0, 0, 0, 0.25)',
       },
     },
   },

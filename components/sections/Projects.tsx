@@ -20,12 +20,25 @@ import {
   Eye,
   Brain
 } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 const Projects = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  const [visibleProjects, setVisibleProjects] = useState(1)
+
+  useEffect(() => {
+    if (inView) {
+      // Lazy load projects with a delay
+      const timer = setTimeout(() => {
+        setVisibleProjects(2)
+      }, 300)
+      return () => clearTimeout(timer)
+    }
+  }, [inView])
 
   const projects = [
     {
@@ -58,8 +71,20 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 bg-gradient-to-b from-background to-secondary/20 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 transform rotate-12 scale-150"></div>
+      </div>
+
+      {/* Animated Wave Divider at Top */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+        <svg className="relative block w-full h-8" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-current text-secondary/20"></path>
+        </svg>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
@@ -78,76 +103,79 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid with Enhanced Glassmorphism */}
         <div className="grid lg:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
+          {projects.slice(0, visibleProjects).map((project, index) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                delay: index * 0.2, 
+                duration: 0.6,
+                type: "spring",
+                stiffness: 100
+              }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group"
             >
-              <Card className="cloud-card h-full group hover:shadow-lg transition-all duration-300">
-                {/* Project Image Placeholder */}
-                <div className="relative h-36 bg-gradient-to-br from-accent to-accent/50 rounded-t-lg overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
+              <Card className="glass-panel h-full border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden">
+                <div className="relative overflow-hidden">
+                  {/* Project Image Placeholder with Gradient */}
+                  <div className="h-48 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 flex items-center justify-center">
                     <div className="text-center">
-                      <Cloud className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
-                      <p className="text-muted-foreground font-body font-medium text-sm">{project.title}</p>
+                      <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <Cloud className="h-8 w-8 text-primary" />
+                      </div>
+                      <p className="text-sm text-muted-foreground font-medium">{project.category}</p>
                     </div>
                   </div>
+                  
                   {/* Status Badge */}
-                  <div className="absolute top-3 right-3">
-                    <Badge className={`${getStatusColor(project.status)} text-xs`}>
+                  <div className="absolute top-4 right-4">
+                    <Badge className={`${getStatusColor(project.status)} backdrop-blur-sm border-white/20`}>
                       {project.status}
                     </Badge>
                   </div>
                 </div>
 
                 <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <CardTitle className="text-lg font-heading font-semibold mb-2 group-hover:text-primary transition-colors text-foreground">
-                        {project.title}
-                      </CardTitle>
-                      <Badge variant="outline" className="text-xs border-border">
-                        {project.category}
-                      </Badge>
-                    </div>
-                  </div>
+                  <CardTitle className="text-xl font-orbitron font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </CardTitle>
                 </CardHeader>
 
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4">
                   <p className="text-muted-foreground font-body text-sm leading-relaxed">
                     {project.description}
                   </p>
 
-                  {/* Technologies */}
+                  {/* Technologies with Enhanced Badges */}
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs border-border/50 text-foreground">
+                      <Badge key={tech} variant="outline" className="text-xs border-white/20 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 backdrop-blur-sm">
                         {tech}
                       </Badge>
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Action Buttons with Enhanced Hover Effects */}
                   <div className="flex gap-3 pt-3">
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="flex-1 group/btn border-border hover:bg-accent"
+                      className="flex-1 group/btn border-white/20 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 backdrop-blur-sm"
                       onClick={() => window.open(project.github, '_blank')}
                     >
-                      <Github className="h-4 w-4 mr-2 group-hover/btn:text-primary" />
+                      <Github className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform duration-300" />
                       View Code
                     </Button>
                     <Button 
                       variant="ghost" 
                       size="sm"
-                      className="group/btn"
+                      className="group/btn hover:bg-primary/10 hover:text-primary transition-all duration-300"
                     >
-                      <Eye className="h-4 w-4 group-hover/btn:text-primary" />
+                      <Eye className="h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
                     </Button>
                   </div>
                 </CardContent>
