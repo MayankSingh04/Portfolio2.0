@@ -10,8 +10,11 @@ import {
   Database, 
   Globe,
   GraduationCap,
-  Trophy
+  Trophy,
+  Award,
+  Download
 } from 'lucide-react'
+import { downloadJPMCCertification } from '@/lib/utils'
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -157,7 +160,53 @@ const Skills = () => {
           </Card>
         </motion.div>
 
-
+        {/* Certifications Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mb-8"
+        >
+          <Card className="cloud-card max-w-2xl mx-auto glow-effect">
+            <CardContent className="pt-4">
+              <div className="flex items-center justify-center space-x-3 mb-4">
+                <div className="p-2 rounded-full bg-primary/10">
+                  <Award className="h-6 w-6 text-primary" />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-base font-space font-semibold text-foreground">Professional Certifications</h3>
+                  <p className="text-xs text-muted-foreground">Industry-recognized achievements</p>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center justify-between p-4 rounded-xl bg-accent/50 border border-white/20 backdrop-blur-sm hover:bg-accent/80 transition-all duration-300"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 rounded-full bg-blue-500/20">
+                      <Award className="h-5 w-5 text-blue-500" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-foreground">JPMC Job Simulation</h4>
+                      <p className="text-xs text-muted-foreground">JP Morgan Chase & Co.</p>
+                    </div>
+                  </div>
+                  <motion.button
+                    onClick={downloadJPMCCertification}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-200"
+                    title="Download Certification"
+                  >
+                    <Download className="h-4 w-4 text-primary" />
+                  </motion.button>
+                </motion.div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/* Skills Categories - Enhanced with Glassmorphism */}
         <div className="grid lg:grid-cols-2 gap-6">

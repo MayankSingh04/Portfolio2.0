@@ -14,6 +14,15 @@ export function downloadResume() {
   document.body.removeChild(link)
 }
 
+export function downloadJPMCCertification() {
+  const link = document.createElement('a')
+  link.href = '/JPMCjobsimulation.pdf'
+  link.download = 'JPMC_Job_Simulation_Certification.pdf'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+
 export function formatDate(date: string | Date) {
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
