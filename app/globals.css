@@ -302,6 +302,19 @@
     right: 1rem !important;
     z-index: 40 !important;
   }
+
+  /* Cloud Status mobile positioning */
+  #cloud-status {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    z-index: 50 !important;
+  }
+
+  /* Ensure Cloud Status doesn't overlap with bottom navigation */
+  #cloud-status .cloud-card {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
   
   /* Ensure proper spacing for bottom navigation */
   main {
