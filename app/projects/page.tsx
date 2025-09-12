@@ -10,15 +10,15 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-black text-white pb-20 sm:pb-24">
       <SideNavigation />
-      <div className="ml-20">
+      <div className="ml-0 sm:ml-20">
         <PageNavigation 
           title="Projects" 
           subtitle="Innovative solutions and case studies" 
           theme="dark"
         />
-        <div className="pt-8">
+        <div className="pt-4 sm:pt-8">
           <Projects />
         </div>
       </div>

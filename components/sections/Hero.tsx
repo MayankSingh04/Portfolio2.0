@@ -102,11 +102,11 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="group border-white/30 text-white hover:bg-white hover:text-black px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold touch-manipulation"
+              className="group border-white/30 text-white hover:bg-white hover:text-black px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold touch-manipulation bg-transparent"
               onClick={handleResumeDownload}
             >
-              <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              <span>Download Resume</span>
+              <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white group-hover:text-black" />
+              <span className="text-white group-hover:text-black">Download Resume</span>
             </Button>
           </div>
 

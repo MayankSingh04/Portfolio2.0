@@ -145,7 +145,12 @@ const MusicPlayer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-4 right-4 z-40 sm:top-6 sm:right-6 music-player-mobile"
+      className="fixed top-4 right-4 z-40 sm:top-6 sm:right-6"
+      style={{ 
+        top: '1rem',
+        right: '1rem',
+        zIndex: 40
+      }}
     >
       <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl w-[260px] sm:w-[280px] sm:min-w-[280px] sm:max-w-[320px] sm:p-4">
         {/* Track Info */}

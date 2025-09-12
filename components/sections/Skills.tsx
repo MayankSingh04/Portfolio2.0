@@ -82,7 +82,7 @@ const Skills = () => {
 
 
   return (
-    <section id="skills" className="py-20 bg-black relative overflow-hidden">
+    <section id="skills" className="py-12 sm:py-20 bg-black relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-black">
         <div className="absolute inset-0 opacity-5 bg-dot-pattern"></div>
@@ -95,7 +95,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -103,16 +103,16 @@ const Skills = () => {
             transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
             className="inline-flex items-center space-x-2 mb-6"
           >
-            <Badge variant="outline" className="border-white/30 text-white bg-black px-4 py-2 text-sm">
-              <Zap className="h-4 w-4 mr-2" />
+            <Badge variant="outline" className="border-white/30 text-white bg-black px-3 sm:px-4 py-2 text-xs sm:text-sm">
+              <Zap className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
               Technical Skills
             </Badge>
           </motion.div>
           
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
             Core <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Technologies</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
             Expertise in cloud infrastructure, AI-augmented development, and modern software engineering practices.
           </p>
         </motion.div>

@@ -10,15 +10,17 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-black text-white pb-20 sm:pb-24">
       <SideNavigation />
-      <div className="ml-20">
+      <div className="ml-0 sm:ml-20">
         <PageNavigation 
           title="Contact" 
           subtitle="Let's build something amazing together"
           theme="dark"
         />
-        <Contact />
+        <div className="pt-4 sm:pt-8">
+          <Contact />
+        </div>
       </div>
     </main>
   )

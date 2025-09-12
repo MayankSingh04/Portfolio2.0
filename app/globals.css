@@ -290,6 +290,18 @@
     font-size: 0.875rem;
     line-height: 1.5;
   }
+  
+  /* Fix music player positioning on mobile */
+  .fixed.top-4.right-4 {
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 40 !important;
+  }
+  
+  /* Ensure proper spacing for bottom navigation */
+  main {
+    padding-bottom: 5rem !important;
+  }
 }
 
 /* Tablet improvements */
