@@ -40,12 +40,7 @@ export const metadata: Metadata = {
   keywords: ['Cloud Engineer', 'AWS', 'Terraform', 'Python', 'DevOps', 'Infrastructure', 'Computer Science'],
   authors: [{ name: 'Mayank Singh Dhami' }],
   creator: 'Mayank Singh Dhami',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
+  metadataBase: new URL('https://mayanksinghdhami.dev'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -73,6 +68,13 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
