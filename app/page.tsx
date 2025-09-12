@@ -1,11 +1,8 @@
 import { Metadata } from 'next'
 import Hero from '@/components/sections/Hero'
-import About from '@/components/sections/About'
-import Skills from '@/components/sections/Skills'
-import Projects from '@/components/sections/Projects'
-import Contact from '@/components/sections/Contact'
-import Navigation from '@/components/Navigation'
+import SideNavigation from '@/components/SideNavigation'
 import CloudStatus from '@/components/CloudStatus'
+import MusicPlayer from '@/components/MusicPlayer'
 
 export const metadata: Metadata = {
   title: 'Mayank Singh Dhami - Cloud Engineer & Computer Science Student',
@@ -15,26 +12,17 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main id="main-content" className="min-h-screen bg-background theme-transition">
-      {/* Navigation */}
-      <Navigation />
-      
       {/* Hero Section */}
       <Hero />
-      
-      {/* About Section */}
-      <About />
-      
-      {/* Skills Section */}
-      <Skills />
-      
-      {/* Projects Section */}
-      <Projects />
-      
-      {/* Contact Section */}
-      <Contact />
-      
+
       {/* Cloud Status Widget */}
       <CloudStatus />
+
+      {/* Music Player */}
+      <MusicPlayer />
+
+      {/* Enhanced Bottom Navigation */}
+      <SideNavigation />
     </main>
   )
 }

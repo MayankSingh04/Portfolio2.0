@@ -1,230 +1,172 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { ArrowRight, Download, Github, Linkedin, Mail, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { 
-  Cloud, 
-  Code, 
-  Server, 
-  Zap, 
-  ArrowRight, 
-  Download,
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  Brain,
-  Sparkles
-} from 'lucide-react'
-import { downloadResume } from '@/lib/utils'
+import { motion } from 'framer-motion'
 
 const Hero = () => {
-  const floatingIcons = [
-    { icon: Cloud, delay: 0, position: 'top-16 left-16' },
-    { icon: Brain, delay: 0.5, position: 'top-24 right-16' },
-    { icon: Code, delay: 1, position: 'bottom-24 left-24' },
-    { icon: Server, delay: 1.5, position: 'bottom-16 right-24' },
-    { icon: Sparkles, delay: 2, position: 'top-1/2 left-1/4' },
-  ]
-
   const handleResumeDownload = () => {
-    downloadResume()
-  }
-
-  const scrollToProjects = () => {
-    const projectsSection = document.querySelector('#projects')
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' })
-    }
+    const link = document.createElement('a')
+    link.href = '/RESUME28AUG.pdf'
+    link.download = 'Mayank_Singh_Dhami_Resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {floatingIcons.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 0.05, y: 0 }}
-            transition={{ delay: item.delay, duration: 1 }}
-            className={`absolute ${item.position} text-muted-foreground`}
-          >
-            <item.icon className="h-12 w-12 floating" />
-          </motion.div>
-        ))}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Minimalist Background */}
+      <div className="absolute inset-0 bg-black">
+        <div className="absolute inset-0 opacity-5 bg-dot-pattern"></div>
       </div>
 
-      {/* Professional Background */}
-      <div className="absolute inset-0 professional-gradient" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6"
-        >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <Badge variant="outline" className="text-sm px-4 py-2 border-border text-foreground glow-effect">
-              <Cloud className="h-4 w-4 mr-2" />
-              Cloud Engineer • AI-Powered Development
-            </Badge>
-          </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-12">
+          {/* Main Content with Profile Picture */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+            {/* Profile Picture */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="flex-shrink-0"
+            >
+              <div className="w-48 h-48 lg:w-56 lg:h-56 relative">
+                <motion.div
+                  initial={{ rotate: -5 }}
+                  animate={{ rotate: 0 }}
+                  transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
+                  className="w-full h-full rounded-full overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-300 p-1"
+                >
+                  <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                    <img 
+                      src="/profile-picture.JPG" 
+                      alt="Mayank Singh Dhami"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="w-full h-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center hidden">
+                      <span className="text-white text-6xl">👨‍💻</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
 
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-6xl font-orbitron font-bold tracking-tight"
-          >
-            <span className="name-gradient">Mayank Singh</span>
-            <br />
-            <span className="name-gradient">Dhami</span>
-          </motion.h1>
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-center lg:text-left space-y-6"
+            >
+              {/* Tagline */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="text-2xl md:text-3xl font-light text-white/80"
+              >
+                Engineer. Tinkerer. Trader.
+              </motion.div>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl font-space text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-          >
-            Cloud Engineer specializing in <span className="font-semibold text-foreground">AWS infrastructure</span> and 
-            <span className="font-semibold text-foreground"> AI-augmented development</span>. Building scalable, 
-            secure solutions that drive business value through automation and intelligent systems.
-          </motion.p>
+              {/* Main Title */}
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight">
+                <div className="block">Software Engineer</div>
+                <div className="block text-white/60">& Developer</div>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl">
+                Building scalable infrastructure solutions and modern applications that drive real business value.
+              </p>
+            </motion.div>
+          </div>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              variant="default" 
               size="lg" 
-              className="group bg-primary hover:bg-primary/90 glow-effect w-full sm:w-auto min-h-[48px] px-8"
-              onClick={scrollToProjects}
+              className="group bg-white text-black hover:bg-white/90 border-0 px-8 py-3 text-lg font-semibold"
+              onClick={() => window.open('https://github.com/MayankSingh04?tab=repositories', '_blank')}
             >
-              <span>View Projects</span>
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <span>View My Work</span>
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="group border-border hover:bg-accent w-full sm:w-auto min-h-[48px] px-8"
+              className="group border-white/30 text-white hover:bg-white hover:text-black px-8 py-3 text-lg font-semibold"
               onClick={handleResumeDownload}
             >
-              <Download className="mr-2 h-4 w-4" />
+              <Download className="mr-2 h-5 w-5" />
               <span>Download Resume</span>
             </Button>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-            className="flex flex-wrap justify-center gap-6 text-sm font-body"
-          >
-            <motion.div 
-              className="flex items-center space-x-2 group cursor-pointer hover:scale-105 transition-all duration-300"
-              whileHover={{ y: -2 }}
-              onClick={() => window.open('tel:9012176321', '_blank')}
-            >
-              <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                <Phone className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <span className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">9012176321</span>
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center space-x-2 group cursor-pointer hover:scale-105 transition-all duration-300"
-              whileHover={{ y: -2 }}
-              onClick={() => window.open('mailto:mayanksinghdhami7@gmail.com', '_blank')}
-            >
-              <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                <Mail className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-              </div>
-              <span className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">mayanksinghdhami7@gmail.com</span>
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center space-x-2 group cursor-pointer hover:scale-105 transition-all duration-300"
-              whileHover={{ y: -2 }}
-            >
-              <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                <span className="text-primary text-lg group-hover:scale-110 transition-transform duration-300">📍</span>
-              </div>
-              <span className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">Haldwani, India</span>
-            </motion.div>
-          </motion.div>
+          </div>
 
           {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex justify-center space-x-4"
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="flex justify-center"
           >
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="hover:bg-accent glow-effect"
-              onClick={() => window.open('https://github.com/MayankSingh04', '_blank')}
-            >
-              <Github className="h-5 w-5" />
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="hover:bg-accent glow-effect"
-              onClick={() => window.open('https://www.linkedin.com/in/mayanksdhami/', '_blank')}
-            >
-              <Linkedin className="h-5 w-5" />
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="hover:bg-accent glow-effect"
-              onClick={() => window.open('https://x.com/MayankDhami16', '_blank')}
-            >
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </Button>
+            <div className="flex items-center space-x-6">
+              <motion.a
+                href="https://github.com/MayankSingh04"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+                aria-label="GitHub"
+              >
+                <Github className="h-6 w-6" />
+              </motion.a>
+              
+              <motion.a
+                href="https://linkedin.com/in/mayanksinghdhami"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-6 w-6" />
+              </motion.a>
+              
+              <motion.a
+                href="mailto:mayanksinghdhami@gmail.com"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+                aria-label="Email"
+              >
+                <Mail className="h-6 w-6" />
+              </motion.a>
+              
+              <motion.a
+                href="https://twitter.com/mayanksinghdhami"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-6 w-6" />
+              </motion.a>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-5 h-8 border-2 border-border rounded-full flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-2 bg-primary rounded-full mt-2"
-          />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }

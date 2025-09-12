@@ -111,11 +111,11 @@ const CloudStatus = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(true)}
-              className="h-12 px-4 bg-background/90 backdrop-blur-md border border-border shadow-xl hover:bg-background hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="h-12 px-4 bg-black/90 backdrop-blur-md border border-white/20 shadow-xl hover:bg-black hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
-              <Cloud className="h-5 w-5 mr-2 text-primary" />
-              <span className="text-sm font-medium text-foreground">Cloud Status</span>
-              <Badge className={`ml-2 ${getStatusColor(overallStatus)}`}>
+              <Cloud className="h-5 w-5 mr-2 text-white" />
+              <span className="text-sm font-medium text-white">Cloud Status</span>
+              <Badge className={`ml-2 ${overallStatus === 'operational' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'}`}>
                 {overallStatus === 'operational' ? '✓' : '⚠'}
               </Badge>
             </Button>
@@ -132,11 +132,11 @@ const CloudStatus = () => {
               transition={{ duration: 0.3 }}
               className="absolute bottom-0 right-0"
             >
-              <Card className="cloud-card w-80 shadow-2xl border-border glow-effect bg-background/95 backdrop-blur-md">
+              <Card className="cloud-card w-80 shadow-2xl border-white/20 glow-effect bg-black/95 backdrop-blur-md">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg font-space font-semibold flex items-center text-foreground">
-                      <Cloud className="h-5 w-5 mr-2 text-primary" />
+                    <CardTitle className="text-lg font-space font-semibold flex items-center text-white">
+                      <Cloud className="h-5 w-5 mr-2 text-white" />
                       Cloud Status
                     </CardTitle>
                     <div className="flex items-center space-x-2">
@@ -144,17 +144,17 @@ const CloudStatus = () => {
                         variant="ghost"
                         size="sm"
                         onClick={() => setIsExpanded(false)}
-                        className="h-6 w-6 p-0 hover:bg-accent transition-colors"
+                        className="h-6 w-6 p-0 hover:bg-white/10 transition-colors text-white"
                       >
                         <Minimize2 className="h-3 w-3" />
                       </Button>
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <Badge className={`${getStatusColor(overallStatus)} text-xs`}>
+                    <Badge className={`${overallStatus === 'operational' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'} text-xs`}>
                       {overallStatus === 'operational' ? 'All Systems Operational' : 'Some Issues Detected'}
                     </Badge>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-white/70">
                       {currentTime.toLocaleTimeString()}
                     </p>
                   </div>
@@ -169,39 +169,39 @@ const CloudStatus = () => {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1, duration: 0.3 }}
-                        className="flex items-center justify-between p-3 rounded-lg hover:bg-accent transition-colors border border-border/50"
+                        className="flex items-center justify-between p-3 rounded-lg hover:bg-white/10 transition-colors border border-white/20"
                       >
                         <div className="flex items-center space-x-3">
-                          <service.icon className="h-4 w-4 text-primary" />
+                          <service.icon className="h-4 w-4 text-white" />
                           <div>
                             <div className="flex items-center space-x-2">
-                              <span className="text-sm font-medium text-foreground">{service.name}</span>
+                              <span className="text-sm font-medium text-white">{service.name}</span>
                               <StatusIcon className={`h-3 w-3 ${
-                                service.status === 'operational' ? 'text-green-600' : 
-                                service.status === 'development' ? 'text-yellow-600' : 'text-red-600'
+                                service.status === 'operational' ? 'text-green-400' : 
+                                service.status === 'development' ? 'text-yellow-400' : 'text-red-400'
                               }`} />
                             </div>
-                            <p className="text-xs text-muted-foreground">{service.description}</p>
-                            <p className="text-xs text-muted-foreground">Last: {service.lastIncident}</p>
+                            <p className="text-xs text-white/70">{service.description}</p>
+                            <p className="text-xs text-white/70">Last: {service.lastIncident}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-xs font-medium text-foreground">{service.uptime}</div>
-                          <div className="text-xs text-muted-foreground">{service.responseTime}</div>
+                          <div className="text-xs font-medium text-white">{service.uptime}</div>
+                          <div className="text-xs text-white/70">{service.responseTime}</div>
                         </div>
                       </motion.div>
                     )
                   })}
                   
-                  <div className="pt-3 border-t border-border/50">
+                  <div className="pt-3 border-t border-white/20">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-2 rounded-lg bg-accent/50">
-                        <div className="text-lg font-bold text-foreground">99.8%</div>
-                        <div className="text-xs text-muted-foreground">Uptime</div>
+                      <div className="text-center p-2 rounded-lg bg-white/10">
+                        <div className="text-lg font-bold text-white">99.8%</div>
+                        <div className="text-xs text-white/70">Uptime</div>
                       </div>
-                      <div className="text-center p-2 rounded-lg bg-accent/50">
-                        <div className="text-lg font-bold text-foreground">69ms</div>
-                        <div className="text-xs text-muted-foreground">Response</div>
+                      <div className="text-center p-2 rounded-lg bg-white/10">
+                        <div className="text-lg font-bold text-white">69ms</div>
+                        <div className="text-xs text-white/70">Response</div>
                       </div>
                     </div>
                   </div>

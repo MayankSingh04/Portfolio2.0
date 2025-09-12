@@ -10,11 +10,13 @@ import {
   Database, 
   Globe,
   GraduationCap,
-  Trophy,
   Award,
-  Download
+  Download,
+  Zap,
+  Shield
 } from 'lucide-react'
 import { downloadJPMCCertification } from '@/lib/utils'
+import React, { useState } from 'react'
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -22,252 +24,232 @@ const Skills = () => {
     threshold: 0.1,
   })
 
+  const [activeCategory, setActiveCategory] = useState(0)
+
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, 50])
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.05, 1])
 
-  // Simplified skills data with clear logos
   const skillCategories = [
-    {
-      title: "Programming Languages",
-      icon: Code,
-      skills: [
-        { name: "Python", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
-        { name: "C++", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
-        { name: "C", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" },
-        { name: "SQL", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" },
-        { name: "Bash", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg" },
-      ]
-    },
     {
       title: "Cloud & DevOps",
       icon: Cloud,
+      color: "from-slate-600 to-gray-700",
       skills: [
-        { name: "AWS", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
-        { name: "Terraform", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" },
-        { name: "Kubernetes", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" },
-        { name: "Docker", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" },
-        { name: "Git", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" },
+        { name: "AWS", level: 90, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+        { name: "Terraform", level: 85, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" },
+        { name: "Docker", level: 80, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" },
+        { name: "Kubernetes", level: 75, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" },
+        { name: "Git", level: 90, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" },
       ]
     },
     {
-      title: "Frontend Development",
+      title: "Programming",
+      icon: Code,
+      color: "from-gray-600 to-slate-700",
+      skills: [
+        { name: "Python", level: 85, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
+        { name: "Java", level: 80, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" },
+        { name: "C++", level: 75, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
+        { name: "SQL", level: 85, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" },
+        { name: "Bash", level: 70, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg" },
+      ]
+    },
+    {
+      title: "Frontend",
       icon: Globe,
+      color: "from-zinc-600 to-gray-700",
       skills: [
-        { name: "HTML5", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" },
-        { name: "CSS3", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" },
-        { name: "JavaScript", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" },
-        { name: "React", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
-        { name: "Tailwind", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
+        { name: "React", level: 80, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
+        { name: "HTML5", level: 90, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" },
+        { name: "CSS3", level: 85, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" },
+        { name: "Tailwind", level: 85, logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
+        { name: "Next.js", level: 75, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" },
       ]
     },
     {
-      title: "Databases & Tools",
+      title: "Tools & Databases",
       icon: Database,
+      color: "from-neutral-600 to-slate-700",
       skills: [
-        { name: "MySQL", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" },
-        { name: "PostgreSQL", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" },
-        { name: "Linux", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" },
-        { name: "VS Code", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" },
+        { name: "MySQL", level: 85, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" },
+        { name: "PostgreSQL", level: 80, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" },
+        { name: "Linux", level: 80, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" },
+        { name: "VS Code", level: 90, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" },
+        { name: "GitHub", level: 90, logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" },
       ]
     }
   ]
 
+
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-secondary/20 to-background relative overflow-hidden">
+    <section id="skills" className="py-20 bg-black relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-l from-primary/20 via-transparent to-primary/20 transform -rotate-12 scale-150"></div>
+      <div className="absolute inset-0 bg-black">
+        <div className="absolute inset-0 opacity-5 bg-dot-pattern"></div>
       </div>
-
-      {/* Animated Wave Divider at Top */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-        <svg className="relative block w-full h-8" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" className="fill-current text-background"></path>
-        </svg>
-      </div>
-
-      {/* Floating Background Elements */}
-      <motion.div
-        className="absolute inset-0 opacity-10"
-        style={{ y, scale }}
-      >
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={`floating-skill-${i}`}
-            className="absolute w-2 h-2 bg-primary rounded-full"
-            style={{
-              left: `${20 + (i * 15)}%`,
-              top: `${30 + (i * 10)}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.3, 0.8, 0.3],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.3,
-            }}
-          />
-        ))}
-      </motion.div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <Badge variant="outline" className="mb-3 border-border text-foreground">
-            Technical Skills
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-orbitron font-bold text-foreground mb-4">
-            Core <span className="gradient-text">Technologies</span>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
+            className="inline-flex items-center space-x-2 mb-6"
+          >
+            <Badge variant="outline" className="border-white/30 text-white bg-black px-4 py-2 text-sm">
+              <Zap className="h-4 w-4 mr-2" />
+              Technical Skills
+            </Badge>
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Core <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Technologies</span>
           </h2>
-          <p className="text-lg font-space text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Expertise in cloud infrastructure, AI-augmented development, and modern software engineering practices.
           </p>
         </motion.div>
 
-        {/* GPA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1, duration: 0.8 }}
-          className="mb-8"
-        >
-          <Card className="cloud-card max-w-md mx-auto glow-effect">
-            <CardContent className="pt-4">
-              <div className="flex items-center justify-center space-x-3">
-                <div className="p-2 rounded-full bg-primary/10">
-                  <GraduationCap className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-base font-space font-semibold text-foreground">Academic Performance</h3>
-                  <div className="flex items-center space-x-2 mt-1">
-                    <Trophy className="h-4 w-4 text-yellow-500" />
-                    <span className="text-xl font-orbitron font-bold text-foreground">7.13/10</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">GPA • 6 Semesters</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
 
-        {/* Certifications Section */}
+        {/* Enhanced Certifications Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="mb-8"
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="mb-16"
         >
-          <Card className="cloud-card max-w-2xl mx-auto glow-effect">
-            <CardContent className="pt-4">
-              <div className="flex items-center justify-center space-x-3 mb-4">
-                <div className="p-2 rounded-full bg-primary/10">
-                  <Award className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-base font-space font-semibold text-foreground">Professional Certifications</h3>
-                  <p className="text-xs text-muted-foreground">Industry-recognized achievements</p>
-                </div>
-              </div>
-              
-              <div className="space-y-3">
+          <Card className="max-w-4xl mx-auto bg-gray-900 border border-gray-700 shadow-2xl rounded-2xl overflow-hidden">
+            <div className="bg-gradient-to-r from-slate-700 to-gray-800 p-6 text-white relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-700/20 to-gray-800/20"></div>
+              <div className="relative flex items-center justify-center space-x-3">
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="flex items-center justify-between p-4 rounded-xl bg-accent/50 border border-white/20 backdrop-blur-sm hover:bg-accent/80 transition-all duration-300"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 >
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 rounded-full bg-blue-500/20">
-                      <Award className="h-5 w-5 text-blue-500" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-foreground">JPMC Job Simulation</h4>
-                      <p className="text-xs text-muted-foreground">JP Morgan Chase & Co.</p>
-                    </div>
-                  </div>
-                  <motion.button
-                    onClick={downloadJPMCCertification}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-200"
-                    title="Download Certification"
-                  >
-                    <Download className="h-4 w-4 text-primary" />
-                  </motion.button>
+                  <Award className="h-8 w-8" />
                 </motion.div>
+                <h3 className="text-xl font-bold">Professional Certifications</h3>
               </div>
+            </div>
+            <CardContent className="p-6">
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                className="flex items-center justify-between p-6 rounded-xl bg-gradient-to-r from-gray-800 to-gray-700 border border-gray-600 hover:border-gray-500 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-center space-x-4">
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                    className="p-3 rounded-full bg-gray-500/20 border border-gray-500/30"
+                  >
+                    <Award className="h-6 w-6 text-gray-400" />
+                  </motion.div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">JPMC Job Simulation</h4>
+                    <p className="text-gray-300">JP Morgan Chase & Co. • Financial Technology</p>
+                  </div>
+                </div>
+                <motion.button
+                  onClick={downloadJPMCCertification}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 rounded-full bg-gradient-to-r from-gray-600 to-slate-700 hover:from-gray-500 hover:to-slate-600 text-white transition-all duration-200 shadow-lg"
+                  title="Download Certification"
+                >
+                  <Download className="h-5 w-5" />
+                </motion.button>
+              </motion.div>
             </CardContent>
           </Card>
         </motion.div>
 
-        {/* Skills Categories - Enhanced with Glassmorphism */}
-        <div className="grid lg:grid-cols-2 gap-6">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 + categoryIndex * 0.1, duration: 0.8 }}
-              whileHover={{ y: -5 }}
-            >
-              <Card className="glass-panel h-full border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg font-orbitron font-semibold flex items-center">
-                    <category.icon className="h-4 w-4 mr-2 text-primary" />
-                    {category.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-3 gap-3">
-                    {category.skills.map((skill, skillIndex) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ 
-                          delay: 0.4 + categoryIndex * 0.1 + skillIndex * 0.05, 
-                          duration: 0.5 
-                        }}
-                        whileHover={{ 
-                          scale: 1.1,
-                          y: -3,
-                          transition: { duration: 0.2 }
-                        }}
-                        className="group flex flex-col items-center space-y-2 p-3 rounded-xl bg-accent/50 hover:bg-accent/80 transition-all duration-300 border border-white/20 backdrop-blur-sm"
-                      >
-                        <div className="w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <img 
-                            src={skill.logo} 
-                            alt={skill.name}
-                            className="h-6 w-6 object-contain"
-                            onError={(e) => {
-                              const target = e.currentTarget as HTMLImageElement;
-                              target.style.display = 'none';
-                              const fallback = target.nextElementSibling as HTMLElement;
-                              if (fallback) fallback.classList.remove('hidden');
-                            }}
-                          />
-                          <span className="text-xl hidden absolute">🚀</span>
-                        </div>
-                        <span className="text-xs font-medium text-center text-foreground">
-                          {skill.name}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+        {/* Enhanced Skills Categories Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="flex justify-center mb-12"
+        >
+          <div className="flex flex-wrap justify-center gap-2 bg-gray-900 border border-gray-700 rounded-full p-2 shadow-2xl">
+            {skillCategories.map((category, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setActiveCategory(index)}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 relative overflow-hidden ${
+                  activeCategory === index
+                    ? 'bg-gradient-to-r from-gray-600 to-slate-700 text-white shadow-lg'
+                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                }`}
+              >
+                <motion.div
+                  animate={activeCategory === index ? { rotate: 360 } : { rotate: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <category.icon className="h-4 w-4" />
+                </motion.div>
+                <span>{category.title}</span>
+                {activeCategory === index && (
+                  <motion.div
+                    layoutId="activeCategory"
+                    className="absolute inset-0 bg-gradient-to-r from-gray-600 to-slate-700 rounded-full -z-10"
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Clean Logo-Only Skills Display */}
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            {skillCategories[activeCategory].skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.3 }}
+                whileHover={{ scale: 1.05 }}
+                className="group flex flex-col items-center"
+              >
+                <div className="w-20 h-20 flex items-center justify-center bg-gray-800 rounded-xl border border-gray-700 group-hover:border-gray-500 transition-all duration-200 shadow-md group-hover:shadow-lg">
+                  <img 
+                    src={skill.logo} 
+                    alt={skill.name}
+                    className="h-12 w-12 object-contain filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-200"
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.classList.remove('hidden');
+                    }}
+                  />
+                  <span className="text-2xl hidden">🚀</span>
+                </div>
+                
+                <h4 className="mt-3 text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-200 text-center">
+                  {skill.name}
+                </h4>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )

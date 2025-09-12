@@ -6,11 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { 
   Cloud, 
-  Code, 
-  Server, 
   Zap, 
   Brain,
-  Sparkles
+  Sparkles,
+  Terminal,
+  ChevronRight,
+  User,
+  MapPin,
+  Calendar,
+  GraduationCap
 } from 'lucide-react'
 
 const About = () => {
@@ -20,161 +24,204 @@ const About = () => {
   })
 
   const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0])
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50])
 
-  const features = [
+
+  const highlights = [
     {
       icon: Cloud,
       title: "Cloud Infrastructure",
-      description: "Expert in AWS services, Terraform automation, and scalable architecture design."
+      description: "Proficient in AWS services, Terraform automation, and scalable architecture design.",
+      color: "from-slate-600 to-gray-700"
     },
     {
       icon: Brain,
       title: "AI-Augmented Development",
-      description: "Leveraging AI tools to accelerate development workflows and focus on core infrastructure logic."
+      description: "Leveraging AI tools to accelerate development workflows and focus on core infrastructure logic.",
+      color: "from-gray-600 to-slate-700"
     },
     {
       icon: Sparkles,
       title: "Analytical Mindset",
-      description: "Applied risk management and analytical thinking from trading to technical solutions."
+      description: "Applied risk management and analytical thinking from trading to technical solutions.",
+      color: "from-zinc-600 to-gray-700"
     },
     {
       icon: Zap,
       title: "Security First",
-      description: "Building secure, compliant infrastructure with automated security."
+      description: "Building secure, compliant infrastructure with automated security.",
+      color: "from-neutral-600 to-slate-700"
     }
   ]
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/20 relative overflow-hidden">
+    <section id="about" className="py-20 bg-black relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 transform rotate-12 scale-150"></div>
+      <div className="absolute inset-0 bg-black">
+        <div className="absolute inset-0 opacity-5 bg-dot-pattern"></div>
       </div>
-
-      {/* Animated Wave Divider at Top */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-        <svg className="relative block w-full h-8" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-current text-secondary/20"></path>
-        </svg>
-      </div>
-
-      {/* Scroll-Responsive Background Waves */}
-      <motion.div
-        className="absolute inset-0 opacity-20"
-        style={{ y }}
-      >
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={`about-wave-${i}`}
-            className="absolute inset-0"
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 2, 0],
-            }}
-            transition={{
-              duration: 12 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 1.5,
-            }}
-          >
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 1200 800"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d={`M 0,${300 + i * 150} Q ${300 + i * 100},${200 + i * 100} ${600},${300 + i * 150} T ${1200},${300 + i * 150} L 1200,800 L 0,800 Z`}
-                fill={`url(#aboutGradient${i})`}
-                opacity={0.1 + i * 0.05}
-              />
-              <defs>
-                <linearGradient id={`aboutGradient${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor={`hsl(${200 + i * 40}, 70%, 60%)`} />
-                  <stop offset="100%" stopColor={`hsl(${260 + i * 40}, 70%, 60%)`} />
-                </linearGradient>
-              </defs>
-            </svg>
-          </motion.div>
-        ))}
-      </motion.div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <Badge variant="outline" className="mb-3 border-border text-foreground">
-            About Me
-          </Badge>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Cloud Engineer with <span className="gradient-text">AI-Powered Workflows</span>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
+            className="inline-flex items-center space-x-2 mb-6"
+          >
+            <Badge variant="outline" className="border-white/30 text-white bg-black px-4 py-2 text-sm font-mono">
+              <User className="h-4 w-4 mr-2" />
+              About Me
+            </Badge>
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-6xl font-light text-white mb-6">
+            Building the <span className="text-white font-medium">Future</span> from code to Cloud.
           </h2>
-          <p className="text-lg font-body text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A passionate learner and aspiring Cloud Engineer focused on building scalable cloud infrastructure on AWS using Terraform and Python. I have hands-on experience using AI tools to accelerate development and concentrate on core infrastructure logic.
-              
+          <p className="text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-light">
+            A passionate Computer Science student and Cloud Engineer focused on building scalable infrastructure solutions that drive real business value.
           </p>
         </motion.div>
 
-        {/* About Content with Glassmorphism */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          {/* Left Side - Personal Info */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="space-y-6"
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="space-y-8"
           >
-            <div className="glass-panel rounded-2xl p-8 border border-white/20 shadow-2xl">
-              <h3 className="text-2xl font-orbitron font-bold text-foreground mb-4">
-                Cloud Engineer & AI Enthusiast
-              </h3>
-              <p className="text-muted-foreground font-body leading-relaxed mb-4">
-                I'm a Computer Science student at <span className="font-semibold text-foreground">Graphic Era University</span>, 
-                specializing in cloud infrastructure and AI-augmented development. My passion lies in building scalable, 
-                secure solutions that leverage the power of modern cloud technologies.
-              </p>
-              <p className="text-muted-foreground font-body leading-relaxed">
-                Currently in my <span className="font-semibold text-foreground">6th semester</span>, I've developed a strong foundation 
-                in AWS, Terraform, and Python. I believe in the transformative potential of AI to enhance development workflows 
-                and create more intelligent, efficient systems.
-              </p>
-            </div>
+            {/* Personal Card */}
+            <Card className="bg-gray-900 border border-gray-700 shadow-xl rounded-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-gray-800 to-black p-8 text-white">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+                    <img 
+                      src="/profile-picture.jpg" 
+                      alt="Mayank Singh Dhami"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.classList.remove('hidden');
+                      }}
+                    />
+                    <User className="h-8 w-8 hidden" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold">Mayank Singh Dhami</h3>
+                    <p className="text-gray-300">Cloud Engineer & CS Student</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <GraduationCap className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-300">Graphic Era University</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-300">Haldwani, India</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-300">6th Semester</span>
+                  </div>
+                </div>
+              </div>
+              
+              <CardContent className="p-8">
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  I'm a Computer Science student passionate about cloud infrastructure and AI-augmented development. 
+                  My journey combines academic excellence with hands-on experience in building scalable AWS solutions using Terraform and Python.
+                </p>
+                <p className="text-gray-300 leading-relaxed">
+                  With a strong foundation in trading and risk management, I bring analytical thinking to technical solutions, 
+                  focusing on security-first approaches and automated infrastructure deployment.
+                </p>
+              </CardContent>
+            </Card>
+
           </motion.div>
 
-          {/* Right Column - Visual Elements */}
+          {/* Right Side - Highlights */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
+            className="space-y-6"
           >
-            <div className="grid grid-cols-2 gap-3">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                >
-                  <Card className="cloud-card h-full">
-                    <CardHeader className="pb-2">
-                      <feature.icon className="h-6 w-6 text-primary mb-2" />
-                      <CardTitle className="text-base font-heading text-foreground">{feature.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <p className="text-xs font-body text-muted-foreground">{feature.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+            <h3 className="text-2xl font-bold text-white mb-8">What I Do Best</h3>
+            
+            {highlights.map((highlight, index) => (
+              <motion.div
+                key={highlight.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
+                whileHover={{ x: 10 }}
+                className="group"
+              >
+                <Card className="p-6 bg-gray-900 border border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-l-4 group-hover:border-blue-500">
+                  <div className="flex items-start space-x-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${highlight.color} shadow-lg`}>
+                      <highlight.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-white mb-2">{highlight.title}</h4>
+                      <p className="text-gray-300 leading-relaxed">{highlight.description}</p>
+                    </div>
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-300" />
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
+
+        {/* Terminal Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="bg-slate-900 rounded-2xl p-8 shadow-2xl"
+        >
+          <div className="flex items-center space-x-2 mb-6">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+            <span className="text-slate-300 text-sm font-mono ml-4">mayank@cloud-engineer:~</span>
+          </div>
+          
+          <div className="font-mono text-sm space-y-2">
+            <div className="flex items-center">
+              <span className="text-green-400 mr-2">$</span>
+              <span className="text-blue-400">cat journey.txt</span>
+            </div>
+            <div className="text-slate-300 ml-4">
+              <div>In my B.Tech CSE journey, I’ve: Built projects ranging from lexical analyzers to expense trackers and cloud-based apps.Explored AWS, DevOps, and backend engineering, strengthening my foundation in scalable solutions.Balanced academics with self-learning and real-world projects, sharpening problem-solving and adaptability.</div>
+              <div>Discovered cloud computing in 2024</div>
+              <div>Built first AWS project in 2024</div>
+              <div>Currently mastering Terraform & AI tools</div>
+            </div>
+            <div className="flex items-center mt-4">
+              <span className="text-green-400 mr-2">$</span>
+              <span className="text-blue-400">./connect.sh</span>
+            </div>
+            <div className="text-green-400 ml-4">Ready to collaborate on real world problem solving projects!</div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

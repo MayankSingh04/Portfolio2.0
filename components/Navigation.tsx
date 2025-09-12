@@ -6,30 +6,17 @@ import { Menu, X, Cloud, Download, ChevronUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { downloadResume } from '@/lib/utils'
+import { useRouter, usePathname } from 'next/navigation'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
-      
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'projects', 'contact']
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      
-      if (currentSection) {
-        setActiveSection(currentSection)
-      }
     }
     
     window.addEventListener('scroll', handleScroll)
@@ -37,18 +24,15 @@ const Navigation = () => {
   }, [])
 
   const navItems = [
-    { name: 'Home', href: '#home', id: 'home' },
-    { name: 'About', href: '#about', id: 'about' },
-    { name: 'Skills', href: '#skills', id: 'skills' },
-    { name: 'Projects', href: '#projects', id: 'projects' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
+    { name: 'Home', href: '/', id: 'home' },
+    { name: 'About', href: '/about', id: 'about' },
+    { name: 'Skills', href: '/skills', id: 'skills' },
+    { name: 'Projects', href: '/projects', id: 'projects' },
+    { name: 'Contact', href: '/contact', id: 'contact' },
   ]
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+  const navigateToPage = (href: string) => {
+    router.push(href)
     setIsOpen(false)
   }
 
@@ -86,28 +70,31 @@ const Navigation = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.name}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`relative text-foreground hover:text-primary transition-all duration-200 font-space font-medium ${
-                    activeSection === item.id ? 'text-primary' : ''
-                  }`}
-                >
-                  {item.name}
-                  {/* Active Section Indicator */}
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                      initial={false}
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    />
-                  )}
-                </motion.button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = pathname === item.href || (pathname === '/' && item.href === '/')
+                return (
+                  <motion.button
+                    key={item.name}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => navigateToPage(item.href)}
+                    className={`relative text-foreground hover:text-primary transition-all duration-200 font-space font-medium ${
+                      isActive ? 'text-primary' : ''
+                    }`}
+                  >
+                    {item.name}
+                    {/* Active Section Indicator */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      />
+                    )}
+                  </motion.button>
+                )
+              })}
               <ThemeToggle />
               <Button 
                 variant="default" 
@@ -146,17 +133,20 @@ const Navigation = () => {
                 className="md:hidden bg-card/95 backdrop-blur-md rounded-lg shadow-lg border border-border mt-2 overflow-hidden"
               >
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                  {navItems.map((item) => (
-                    <button
-                      key={item.name}
-                      onClick={() => scrollToSection(item.href)}
-                      className={`block w-full text-left px-3 py-3 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors duration-200 font-space ${
-                        activeSection === item.id ? 'text-primary bg-accent/50' : ''
-                      }`}
-                    >
-                      {item.name}
-                    </button>
-                  ))}
+                  {navItems.map((item) => {
+                    const isActive = pathname === item.href || (pathname === '/' && item.href === '/')
+                    return (
+                      <button
+                        key={item.name}
+                        onClick={() => navigateToPage(item.href)}
+                        className={`block w-full text-left px-3 py-3 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors duration-200 font-space ${
+                          isActive ? 'text-primary bg-accent/50' : ''
+                        }`}
+                      >
+                        {item.name}
+                      </button>
+                    )
+                  })}
                   <div className="pt-2">
                     <Button 
                       variant="default" 
