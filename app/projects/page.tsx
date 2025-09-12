@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-black text-white pb-20 sm:pb-24">
+    <main className="min-h-screen bg-background text-foreground pb-20 sm:pb-24">
       {/* Theme Toggle */}
       <div className="fixed top-4 left-4 z-50 theme-toggle-mobile">
         <ThemeToggle />

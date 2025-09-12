@@ -265,6 +265,11 @@
   background-size: 20px 20px;
 }
 
+.bg-dot-pattern-light {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
 /* Mobile-specific improvements */
 @media (max-width: 640px) {
   /* Ensure music player doesn't overlap with navigation */

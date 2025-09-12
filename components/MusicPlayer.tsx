@@ -154,7 +154,8 @@ const MusicPlayer = () => {
         zIndex: 40
       }}
     >
-      <div className={`backdrop-blur-xl border rounded-2xl p-2 sm:p-3 shadow-2xl w-[200px] sm:w-[260px] md:w-[280px] sm:min-w-[260px] sm:max-w-[320px] sm:p-4 ${
+      {/* Desktop/Tablet Version */}
+      <div className={`backdrop-blur-xl border rounded-2xl p-2 sm:p-3 shadow-2xl w-[200px] sm:w-[260px] md:w-[280px] sm:min-w-[260px] sm:max-w-[320px] sm:p-4 hidden md:block ${
         theme === 'dark' 
           ? 'bg-white/10 border-white/20' 
           : 'bg-black/10 border-black/20'
@@ -245,6 +246,53 @@ const MusicPlayer = () => {
             <span>{formatTime(currentTime)}</span>
             <span>{formatTime(duration)}</span>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Version - Simple */}
+      <div className={`backdrop-blur-xl border rounded-2xl p-3 shadow-2xl w-[140px] md:hidden ${
+        theme === 'dark' 
+          ? 'bg-white/10 border-white/20' 
+          : 'bg-black/10 border-black/20'
+      }`}>
+        {/* Song Name */}
+        <div className="text-center mb-3">
+          <h4 className={`text-xs font-semibold truncate ${
+            theme === 'dark' ? 'text-white' : 'text-black'
+          }`}>
+            {currentTrack.title}
+          </h4>
+        </div>
+
+        {/* Play Button */}
+        <div className="flex justify-center">
+          <motion.button
+            onClick={toggleMusic}
+            whileHover={{ scale: isLoading ? 1 : 1.05 }}
+            whileTap={{ scale: isLoading ? 1 : 0.95 }}
+            disabled={isLoading}
+            className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors touch-manipulation ${
+              theme === 'dark' 
+                ? 'bg-white hover:bg-gray-100' 
+                : 'bg-black hover:bg-gray-800'
+            } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          >
+            {isLoading ? (
+              <div className={`w-4 h-4 border-2 rounded-full animate-spin ${
+                theme === 'dark' 
+                  ? 'border-black/30 border-t-black' 
+                  : 'border-white/30 border-t-white'
+              }`} />
+            ) : isPlaying ? (
+              <Pause className={`h-4 w-4 ${
+                theme === 'dark' ? 'text-black' : 'text-white'
+              }`} />
+            ) : (
+              <Play className={`h-4 w-4 ml-0.5 ${
+                theme === 'dark' ? 'text-black' : 'text-white'
+              }`} />
+            )}
+          </motion.button>
         </div>
       </div>
     </motion.div>
