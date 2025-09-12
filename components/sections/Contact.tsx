@@ -231,7 +231,7 @@ const Contact = () => {
                         <h4 className="text-lg font-semibold text-white group-hover:text-gray-400 transition-colors duration-300">
                           {social.name}
                         </h4>
-                        <p className="text-slate-400 text-sm">{social.followers} followers</p>
+                        <p className="text-slate-400 text-sm">Connect with me</p>
                       </div>
                     </div>
                     <p className="text-slate-300 text-sm mb-4">
