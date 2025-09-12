@@ -2,13 +2,9 @@
 
 import { ArrowRight, Download, Github, Linkedin, Mail, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { motion } from 'framer-motion'
-import { useTheme } from 'next-themes'
 
 const Hero = () => {
-  const { theme } = useTheme()
-  
   const handleResumeDownload = () => {
     const link = document.createElement('a')
     link.href = '/RESUME28AUG.pdf'
@@ -20,18 +16,9 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Theme Toggle */}
-      <div className="fixed top-4 left-4 z-50 theme-toggle-mobile">
-        <ThemeToggle />
-      </div>
-
       {/* Minimalist Background */}
-      <div className={`absolute inset-0 ${
-        theme === 'dark' ? 'bg-black' : 'bg-white'
-      }`}>
-        <div className={`absolute inset-0 opacity-5 bg-dot-pattern ${
-          theme === 'dark' ? 'bg-dot-pattern' : 'bg-dot-pattern-light'
-        }`}></div>
+      <div className="absolute inset-0 bg-black">
+        <div className="absolute inset-0 opacity-5 bg-dot-pattern"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 hero-mobile">
@@ -84,27 +71,19 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className={`text-lg sm:text-2xl md:text-3xl font-light ${
-                  theme === 'dark' ? 'text-white/80' : 'text-black/80'
-                }`}
+                className="text-lg sm:text-2xl md:text-3xl font-light text-white/80"
               >
                 Engineer. Tinkerer. Trader.
               </motion.div>
 
               {/* Main Title */}
-              <h1 className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-tight ${
-                theme === 'dark' ? 'text-white' : 'text-black'
-              }`}>
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight">
                 <div className="block">Software Engineer</div>
-                <div className={`block ${
-                  theme === 'dark' ? 'text-white/60' : 'text-black/60'
-                }`}>& Developer</div>
+                <div className="block text-white/60">& Developer</div>
               </h1>
 
               {/* Subtitle */}
-              <p className={`text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl ${
-                theme === 'dark' ? 'text-white/70' : 'text-black/70'
-              }`}>
+              <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl">
                 Building scalable infrastructure solutions and modern applications that drive real business value.
               </p>
             </motion.div>
@@ -114,11 +93,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button 
               size="lg" 
-              className={`group border-0 px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold touch-manipulation ${
-                theme === 'dark' 
-                  ? 'bg-white text-black hover:bg-white/90' 
-                  : 'bg-black text-white hover:bg-black/90'
-              }`}
+              className="group bg-white text-black hover:bg-white/90 border-0 px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold touch-manipulation"
               onClick={() => window.open('https://github.com/MayankSingh04?tab=repositories', '_blank')}
             >
               <span>View My Work</span>
@@ -127,23 +102,11 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className={`group px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold touch-manipulation bg-transparent ${
-                theme === 'dark'
-                  ? 'border-white/30 text-white hover:bg-white hover:text-black'
-                  : 'border-black/30 text-black hover:bg-black hover:text-white'
-              }`}
+              className="group border-white/30 text-white hover:bg-white hover:text-black px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg font-semibold touch-manipulation bg-transparent"
               onClick={handleResumeDownload}
             >
-              <Download className={`mr-2 h-4 w-4 sm:h-5 sm:w-5 ${
-                theme === 'dark' 
-                  ? 'text-white group-hover:text-black' 
-                  : 'text-black group-hover:text-white'
-              }`} />
-              <span className={`${
-                theme === 'dark' 
-                  ? 'text-white group-hover:text-black' 
-                  : 'text-black group-hover:text-white'
-              }`}>Download Resume</span>
+              <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white group-hover:text-black" />
+              <span className="text-white group-hover:text-black">Download Resume</span>
             </Button>
           </div>
 
@@ -161,11 +124,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-2.5 sm:p-3 rounded-full backdrop-blur-sm transition-all duration-300 touch-manipulation ${
-                  theme === 'dark'
-                    ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-black'
-                    : 'bg-black/10 border-black/20 text-black hover:bg-black hover:text-white'
-                } border`}
+                className="p-2.5 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 touch-manipulation"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -177,11 +136,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-2.5 sm:p-3 rounded-full backdrop-blur-sm transition-all duration-300 touch-manipulation ${
-                  theme === 'dark'
-                    ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-black'
-                    : 'bg-black/10 border-black/20 text-black hover:bg-black hover:text-white'
-                } border`}
+                className="p-2.5 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 touch-manipulation"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -191,11 +146,7 @@ const Hero = () => {
                 href="mailto:mayanksinghdhami@gmail.com"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-2.5 sm:p-3 rounded-full backdrop-blur-sm transition-all duration-300 touch-manipulation ${
-                  theme === 'dark'
-                    ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-black'
-                    : 'bg-black/10 border-black/20 text-black hover:bg-black hover:text-white'
-                } border`}
+                className="p-2.5 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 touch-manipulation"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -207,11 +158,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-2.5 sm:p-3 rounded-full backdrop-blur-sm transition-all duration-300 touch-manipulation ${
-                  theme === 'dark'
-                    ? 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-black'
-                    : 'bg-black/10 border-black/20 text-black hover:bg-black hover:text-white'
-                } border`}
+                className="p-2.5 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 touch-manipulation"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5 sm:h-6 sm:w-6" />
