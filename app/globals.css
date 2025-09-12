@@ -305,15 +305,22 @@
 
   /* Cloud Status mobile positioning */
   #cloud-status {
-    bottom: 1rem !important;
+    bottom: 5rem !important;
     right: 1rem !important;
     z-index: 50 !important;
   }
 
   /* Ensure Cloud Status doesn't overlap with bottom navigation */
   #cloud-status .cloud-card {
-    max-height: 70vh;
+    max-height: 60vh;
     overflow-y: auto;
+  }
+
+  /* Ultra-compact mobile button */
+  #cloud-status button {
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
   }
   
   /* Ensure proper spacing for bottom navigation */

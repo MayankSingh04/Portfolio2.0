@@ -96,7 +96,7 @@ const CloudStatus = () => {
   const overallStatus = services.every(s => s.status === 'operational') ? 'operational' : 'degraded'
 
   return (
-    <div id="cloud-status" className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
+    <div id="cloud-status" className="fixed bottom-20 right-4 z-50 sm:bottom-6 sm:right-6">
       <AnimatePresence>
         {/* Minimized View - Always Visible */}
         {!isExpanded && (
@@ -107,18 +107,24 @@ const CloudStatus = () => {
             transition={{ duration: 0.3 }}
             className="relative"
           >
+            {/* Mobile: Ultra-compact button */}
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(true)}
-              className="h-10 sm:h-12 px-3 sm:px-4 bg-black/90 backdrop-blur-md border border-white/20 shadow-xl hover:bg-black hover:shadow-2xl transition-all duration-300 hover:scale-105 touch-manipulation"
+              className="h-8 w-8 sm:h-12 sm:px-4 bg-black/90 backdrop-blur-md border border-white/20 shadow-xl hover:bg-black hover:shadow-2xl transition-all duration-300 hover:scale-105 touch-manipulation p-0 sm:p-2"
             >
-              <Cloud className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 text-white" />
-              <span className="text-xs sm:text-sm font-medium text-white hidden sm:inline">Cloud Status</span>
-              <Badge className={`ml-1 sm:ml-2 text-xs ${overallStatus === 'operational' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'}`}>
+              <Cloud className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+              <span className="text-xs sm:text-sm font-medium text-white hidden sm:inline ml-2">Cloud Status</span>
+              <Badge className={`ml-1 sm:ml-2 text-xs ${overallStatus === 'operational' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'} hidden sm:inline-flex`}>
                 {overallStatus === 'operational' ? '✓' : '⚠'}
               </Badge>
             </Button>
+            
+            {/* Mobile: Status indicator dot */}
+            <div className="absolute -top-1 -right-1 sm:hidden">
+              <div className={`w-3 h-3 rounded-full border-2 border-black ${overallStatus === 'operational' ? 'bg-green-500' : 'bg-yellow-500'}`} />
+            </div>
           </motion.div>
         )}
 
