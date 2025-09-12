@@ -87,6 +87,9 @@
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -95,6 +98,27 @@
   
   code, pre {
     font-family: var(--font-jetbrains-mono);
+  }
+  
+  /* Improve touch targets on mobile */
+  button, a, input, select, textarea {
+    @apply touch-manipulation;
+  }
+  
+  /* Prevent zoom on input focus on iOS */
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
   }
 }
 
@@ -239,5 +263,39 @@
 .bg-dot-pattern {
   background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Ensure music player doesn't overlap with navigation */
+  .music-player-mobile {
+    top: 1rem !important;
+    right: 1rem !important;
+    width: 240px !important;
+  }
+  
+  /* Better spacing for mobile */
+  .mobile-spacing {
+    padding: 1rem;
+  }
+  
+  /* Improve button touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better text sizing on mobile */
+  .mobile-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet improvements */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-spacing {
+    padding: 1.5rem;
+  }
 }
 

@@ -145,13 +145,13 @@ const MusicPlayer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-6 right-6 z-40"
+      className="fixed top-4 right-4 z-40 sm:top-6 sm:right-6 music-player-mobile"
     >
-      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl min-w-[280px] max-w-[320px] sm:min-w-[320px]">
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl w-[260px] sm:w-[280px] sm:min-w-[280px] sm:max-w-[320px] sm:p-4">
         {/* Track Info */}
-        <div className="mb-4">
+        <div className="mb-3 sm:mb-4">
           <div className="text-center">
-            <h4 className="text-sm font-semibold text-white truncate">
+            <h4 className="text-xs sm:text-sm font-semibold text-white truncate">
               {currentTrack.title}
             </h4>
             <p className="text-xs text-gray-300 truncate">
@@ -161,9 +161,9 @@ const MusicPlayer = () => {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center space-x-4">
-          <button className="p-2 rounded-full hover:bg-white/10 transition-colors">
-            <SkipBack className="h-4 w-4 text-white" />
+        <div className="flex items-center justify-center space-x-3 sm:space-x-4">
+          <button className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 transition-colors touch-manipulation">
+            <SkipBack className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
           </button>
           
           <motion.button
@@ -171,28 +171,28 @@ const MusicPlayer = () => {
             whileHover={{ scale: isLoading ? 1 : 1.05 }}
             whileTap={{ scale: isLoading ? 1 : 0.95 }}
             disabled={isLoading}
-            className={`w-10 h-10 rounded-full bg-white flex items-center justify-center transition-colors ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center transition-colors touch-manipulation ${
               isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'
             }`}
           >
             {isLoading ? (
-              <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+              <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
             ) : isPlaying ? (
-              <Pause className="h-4 w-4 text-black" />
+              <Pause className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
             ) : (
-              <Play className="h-4 w-4 text-black ml-0.5" />
+              <Play className="h-3 w-3 sm:h-4 sm:w-4 text-black ml-0.5" />
             )}
           </motion.button>
           
-          <button className="p-2 rounded-full hover:bg-white/10 transition-colors">
-            <SkipForward className="h-4 w-4 text-white" />
+          <button className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 transition-colors touch-manipulation">
+            <SkipForward className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
           </button>
         </div>
 
         {/* Progress Bar */}
-        <div className="mt-4">
+        <div className="mt-3 sm:mt-4">
           <div 
-            className="w-full bg-white/20 rounded-full h-1 cursor-pointer hover:h-2 transition-all duration-200"
+            className="w-full bg-white/20 rounded-full h-1 cursor-pointer hover:h-2 transition-all duration-200 touch-manipulation"
             onClick={handleProgressClick}
           >
             <div

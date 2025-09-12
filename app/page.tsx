@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main id="main-content" className="min-h-screen bg-background theme-transition">
+    <main id="main-content" className="min-h-screen bg-background theme-transition pb-20 sm:pb-24">
       {/* Hero Section */}
       <Hero />
 
