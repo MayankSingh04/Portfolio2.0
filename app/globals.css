@@ -271,7 +271,7 @@
   .music-player-mobile {
     top: 1rem !important;
     right: 1rem !important;
-    width: 240px !important;
+    width: 200px !important;
   }
   
   /* Better spacing for mobile */
@@ -301,6 +301,18 @@
   /* Ensure proper spacing for bottom navigation */
   main {
     padding-bottom: 5rem !important;
+  }
+  
+  /* Better mobile layout for hero section */
+  .hero-mobile {
+    padding-top: 4rem !important;
+  }
+  
+  /* Theme toggle positioning on mobile */
+  .theme-toggle-mobile {
+    top: 1rem !important;
+    left: 1rem !important;
+    z-index: 50 !important;
   }
 }
 

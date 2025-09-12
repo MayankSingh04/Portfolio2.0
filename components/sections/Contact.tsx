@@ -52,7 +52,7 @@ const Contact = () => {
       href: "mailto:mayanksinghdhami7@gmail.com",
       color: "from-slate-600 to-gray-700",
       delay: 0.1,
-      description: "Let's discuss your project"
+      description: "available for emails"
     },
     {
       icon: Phone,
@@ -84,7 +84,6 @@ const Contact = () => {
       description: "View my projects and contributions",
       color: "from-gray-800 to-gray-900",
       delay: 0.4,
-      followers: "50+"
     },
     {
       icon: Linkedin,
@@ -93,7 +92,6 @@ const Contact = () => {
       description: "Connect professionally",
       color: "from-slate-600 to-gray-700",
       delay: 0.5,
-      followers: "500+"
     },
     {
       icon: Globe,
@@ -102,7 +100,6 @@ const Contact = () => {
       description: "Follow for updates",
       color: "from-black to-gray-800",
       delay: 0.6,
-      followers: "100+"
     }
   ]
 

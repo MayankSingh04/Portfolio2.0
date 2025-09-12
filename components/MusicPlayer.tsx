@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Pause, SkipBack, SkipForward } from 'lucide-react'
+import { useTheme } from 'next-themes'
 
 const MusicPlayer = () => {
+  const { theme } = useTheme()
   const [isPlaying, setIsPlaying] = useState(false)
   const [showPlayer, setShowPlayer] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -145,30 +147,42 @@ const MusicPlayer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-4 right-4 z-40 sm:top-6 sm:right-6"
+      className="fixed z-40"
       style={{ 
         top: '1rem',
         right: '1rem',
         zIndex: 40
       }}
     >
-      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 shadow-2xl w-[260px] sm:w-[280px] sm:min-w-[280px] sm:max-w-[320px] sm:p-4">
+      <div className={`backdrop-blur-xl border rounded-2xl p-2 sm:p-3 shadow-2xl w-[200px] sm:w-[260px] md:w-[280px] sm:min-w-[260px] sm:max-w-[320px] sm:p-4 ${
+        theme === 'dark' 
+          ? 'bg-white/10 border-white/20' 
+          : 'bg-black/10 border-black/20'
+      }`}>
         {/* Track Info */}
-        <div className="mb-3 sm:mb-4">
+        <div className="mb-2 sm:mb-3 md:mb-4">
           <div className="text-center">
-            <h4 className="text-xs sm:text-sm font-semibold text-white truncate">
+            <h4 className={`text-xs sm:text-sm font-semibold truncate ${
+              theme === 'dark' ? 'text-white' : 'text-black'
+            }`}>
               {currentTrack.title}
             </h4>
-            <p className="text-xs text-gray-300 truncate">
+            <p className={`text-xs truncate ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               {currentTrack.artist}
             </p>
           </div>
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center space-x-3 sm:space-x-4">
-          <button className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 transition-colors touch-manipulation">
-            <SkipBack className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+        <div className="flex items-center justify-center space-x-2 sm:space-x-3 md:space-x-4">
+          <button className={`p-1 sm:p-1.5 md:p-2 rounded-full transition-colors touch-manipulation ${
+            theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/10'
+          }`}>
+            <SkipBack className={`h-3 w-3 sm:h-4 sm:w-4 ${
+              theme === 'dark' ? 'text-white' : 'text-black'
+            }`} />
           </button>
           
           <motion.button
@@ -176,38 +190,58 @@ const MusicPlayer = () => {
             whileHover={{ scale: isLoading ? 1 : 1.05 }}
             whileTap={{ scale: isLoading ? 1 : 0.95 }}
             disabled={isLoading}
-            className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center transition-colors touch-manipulation ${
-              isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100'
-            }`}
+            className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-colors touch-manipulation ${
+              theme === 'dark' 
+                ? 'bg-white hover:bg-gray-100' 
+                : 'bg-black hover:bg-gray-800'
+            } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             {isLoading ? (
-              <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+              <div className={`w-3 h-3 sm:w-4 sm:h-4 border-2 rounded-full animate-spin ${
+                theme === 'dark' 
+                  ? 'border-black/30 border-t-black' 
+                  : 'border-white/30 border-t-white'
+              }`} />
             ) : isPlaying ? (
-              <Pause className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
+              <Pause className={`h-3 w-3 sm:h-4 sm:w-4 ${
+                theme === 'dark' ? 'text-black' : 'text-white'
+              }`} />
             ) : (
-              <Play className="h-3 w-3 sm:h-4 sm:w-4 text-black ml-0.5" />
+              <Play className={`h-3 w-3 sm:h-4 sm:w-4 ml-0.5 ${
+                theme === 'dark' ? 'text-black' : 'text-white'
+              }`} />
             )}
           </motion.button>
           
-          <button className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 transition-colors touch-manipulation">
-            <SkipForward className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+          <button className={`p-1 sm:p-1.5 md:p-2 rounded-full transition-colors touch-manipulation ${
+            theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/10'
+          }`}>
+            <SkipForward className={`h-3 w-3 sm:h-4 sm:w-4 ${
+              theme === 'dark' ? 'text-white' : 'text-black'
+            }`} />
           </button>
         </div>
 
         {/* Progress Bar */}
-        <div className="mt-3 sm:mt-4">
+        <div className="mt-2 sm:mt-3 md:mt-4">
           <div 
-            className="w-full bg-white/20 rounded-full h-1 cursor-pointer hover:h-2 transition-all duration-200 touch-manipulation"
+            className={`w-full rounded-full h-1 cursor-pointer hover:h-2 transition-all duration-200 touch-manipulation ${
+              theme === 'dark' ? 'bg-white/20' : 'bg-black/20'
+            }`}
             onClick={handleProgressClick}
           >
             <div
-              className="h-full bg-white rounded-full transition-all duration-100"
+              className={`h-full rounded-full transition-all duration-100 ${
+                theme === 'dark' ? 'bg-white' : 'bg-black'
+              }`}
               style={{ 
                 width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' 
               }}
             />
           </div>
-          <div className="flex justify-between text-xs text-gray-300 mt-1">
+          <div className={`flex justify-between text-xs mt-1 ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             <span>{formatTime(currentTime)}</span>
             <span>{formatTime(duration)}</span>
           </div>

@@ -2,6 +2,7 @@
 
 import { ArrowRight, Download, Github, Linkedin, Mail, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { motion } from 'framer-motion'
 
 const Hero = () => {
@@ -16,12 +17,17 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Theme Toggle */}
+      <div className="fixed top-4 left-4 z-50 theme-toggle-mobile">
+        <ThemeToggle />
+      </div>
+
       {/* Minimalist Background */}
-      <div className="absolute inset-0 bg-black">
+      <div className="absolute inset-0 bg-black dark:bg-black">
         <div className="absolute inset-0 opacity-5 bg-dot-pattern"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 hero-mobile">
         <div className="space-y-8 sm:space-y-12">
           {/* Main Content with Profile Picture */}
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-16">
@@ -32,7 +38,7 @@ const Hero = () => {
               transition={{ duration: 0.8, type: "spring" }}
               className="flex-shrink-0"
             >
-              <div className="w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 relative">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 relative">
                 <motion.div
                   initial={{ rotate: -5 }}
                   animate={{ rotate: 0 }}
