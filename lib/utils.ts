@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function downloadResume() {
   const link = document.createElement('a')
-  link.href = '/RESUME28AUG.pdf'
+  link.href = '/MayankSDhami_BTECH.pdf'
   link.download = 'Mayank_Singh_Dhami_Resume.pdf'
   document.body.appendChild(link)
   link.click()
