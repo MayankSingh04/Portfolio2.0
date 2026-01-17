@@ -91,20 +91,6 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-block mb-6"
-          >
-            <Badge 
-              variant="outline" 
-              className="border-white/20 text-white/80 bg-white/5 backdrop-blur-sm px-4 py-1.5 text-sm font-medium"
-            >
-              Featured Work
-            </Badge>
-          </motion.div>
-          
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
