@@ -5,8 +5,8 @@ import CloudStatus from '@/components/CloudStatus'
 import MusicPlayer from '@/components/MusicPlayer'
 
 export const metadata: Metadata = {
-  title: 'Mayank Singh Dhami - Cloud Engineer & Computer Science Student',
-  description: 'Cloud Engineer specializing in AWS, Terraform, and Python. Building infrastructure and web applications.',
+  title: 'Mayank Singh Dhami - Computer Science Student & Developer',
+  description: 'CS student in 8th semester. Building web applications, working with cloud infrastructure, and open to all opportunities.',
 }
 
 export default function Home() {

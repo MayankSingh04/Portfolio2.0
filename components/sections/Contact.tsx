@@ -139,7 +139,7 @@ const Contact = () => {
             Ready to <span className="bg-gradient-to-r from-gray-400 to-slate-400 bg-clip-text text-transparent">Collaborate?</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Looking for opportunities to work on cloud infrastructure and interesting technical problems. Open to full-time roles or interesting projects.
+            CS student in 8th semester, open to all opportunities. Looking for internships, projects, or full-time roles in software development, cloud, or any interesting technical work.
           </p>
         </motion.div>
 
@@ -269,7 +269,7 @@ const Contact = () => {
               </h3>
             </div>
             <p className="text-slate-300 mb-8 leading-relaxed text-lg max-w-2xl mx-auto">
-              I enjoy working on cloud infrastructure and solving technical problems. If you need help with AWS, Terraform, or just want to chat about building things, feel free to reach out.
+              I'm a CS student open to all kinds of opportunities. Whether it's software development, cloud infrastructure, web apps, or something else entirely - I'm interested. Feel free to reach out.
             </p>
             
             {/* Quick Stats */}

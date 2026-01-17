@@ -30,8 +30,8 @@ const About = () => {
   const highlights = [
     {
       icon: Cloud,
-      title: "Cloud Infrastructure",
-      description: "Working with AWS services, Terraform for infrastructure as code, and designing systems that can scale.",
+      title: "Full-Stack Development",
+      description: "Building web applications, working with cloud infrastructure, and writing code across different technologies.",
       color: "from-slate-600 to-gray-700"
     },
     {
@@ -83,10 +83,10 @@ const About = () => {
           </motion.div>
           
           <h2 className="text-2xl sm:text-4xl md:text-6xl font-light text-white mb-4 sm:mb-6">
-            From code to <span className="text-white font-medium">cloud</span>, and everything in between.
+            CS Student. <span className="text-white font-medium">Developer</span>. Always learning.
           </h2>
           <p className="text-base sm:text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-light px-4">
-            CS student who got into cloud engineering a couple years ago. I build infrastructure with AWS and Terraform, write Python, and occasionally trade when I'm not coding.
+            Currently in my 8th semester of BTech CSE. I build web applications, work with cloud infrastructure, write code in multiple languages, and occasionally trade. Open to all kinds of opportunities.
           </p>
         </motion.div>
 
@@ -119,7 +119,7 @@ const About = () => {
                   </div>
                   <div className="text-center sm:text-left">
                     <h3 className="text-xl sm:text-2xl font-bold">Mayank Singh Dhami</h3>
-                    <p className="text-gray-300 text-sm sm:text-base">Cloud Engineer & CS Student</p>
+                    <p className="text-gray-300 text-sm sm:text-base">CS Student & Developer</p>
                   </div>
                 </div>
                 
@@ -141,12 +141,12 @@ const About = () => {
               
               <CardContent className="p-4 sm:p-8">
                 <p className="text-gray-300 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
-                  I'm a CS student who discovered cloud engineering in 2024 and got hooked. Since then, I've been building projects with AWS, 
-                  learning Terraform, and writing Python. I like building things that actually work and can handle real traffic.
+                  I'm a CS student in my 8th semester. I've worked on web applications, cloud infrastructure projects, and various coding challenges. 
+                  I write code in Python, Java, and other languages. I like building things that actually work.
                 </p>
                 <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                   I also trade (forex, crypto, options) which has taught me a lot about risk management and thinking through systems. 
-                  That perspective helps when I'm designing infrastructure or debugging production issues.
+                  I'm open to all kinds of opportunities - internships, projects, or full-time roles in software development, cloud, or related fields.
                 </p>
               </CardContent>
             </Card>

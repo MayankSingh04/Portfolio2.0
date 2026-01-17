@@ -5,7 +5,7 @@ import PageNavigation from '@/components/PageNavigation'
 
 export const metadata: Metadata = {
   title: 'About - Mayank Singh Dhami',
-  description: 'Learn more about Mayank Singh Dhami, a Cloud Engineer and Computer Science student working with AWS, Terraform, and Python.',
+  description: 'Learn more about Mayank Singh Dhami, a CS student in 8th semester building web applications and open to all opportunities.',
 }
 
 export default function AboutPage() {

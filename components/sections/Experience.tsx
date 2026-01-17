@@ -255,8 +255,7 @@ const Experience = () => {
               Ready to collaborate?
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Looking for full-time opportunities in Cloud Engineering, DevOps, and similar roles. 
-              Always interested in working on interesting problems.
+              CS student in 8th semester, open to all opportunities. Looking for internships, projects, or full-time roles in software development, cloud, web development, or any interesting technical work.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Badge variant="cloud" className="text-sm px-4 py-2">

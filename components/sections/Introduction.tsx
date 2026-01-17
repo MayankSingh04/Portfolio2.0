@@ -171,10 +171,10 @@ const Introduction = () => {
                     className="space-y-4"
                   >
                     <p className="text-xl text-white/80 leading-relaxed">
-                      I build cloud infrastructure and web applications. Mostly working with AWS, Terraform, and Python these days.
+                      CS student in my 8th semester. I build web applications, work with cloud infrastructure, and write code in Python, Java, and other languages.
                     </p>
                     <p className="text-lg text-white/60 leading-relaxed">
-                      Also do some trading on the side, which helps me think about risk and systems differently.
+                      Also do some trading on the side, which helps me think about risk and systems differently. Open to all kinds of opportunities.
                     </p>
                   </motion.div>
 

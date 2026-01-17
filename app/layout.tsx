@@ -35,8 +35,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Mayank Singh Dhami - Cloud Engineer & Computer Science Student',
-  description: 'Cloud Engineer specializing in AWS, Terraform, and Python. Building infrastructure and web applications.',
+  title: 'Mayank Singh Dhami - Computer Science Student & Developer',
+  description: 'CS student in 8th semester. Building web applications, working with cloud infrastructure, and open to all opportunities.',
   keywords: ['Cloud Engineer', 'AWS', 'Terraform', 'Python', 'DevOps', 'Infrastructure', 'Computer Science'],
   authors: [{ name: 'Mayank Singh Dhami' }],
   creator: 'Mayank Singh Dhami',
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://mayanksinghdhami.dev',
-    title: 'Mayank Singh Dhami - Cloud Engineer',
-    description: 'Cloud Engineer specializing in AWS, Terraform, and Python. Building infrastructure and web applications.',
+    title: 'Mayank Singh Dhami - CS Student & Developer',
+    description: 'CS student in 8th semester. Building web applications, working with cloud infrastructure, and open to all opportunities.',
     siteName: 'Mayank Singh Dhami Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mayank Singh Dhami - Cloud Engineer',
-    description: 'Cloud Engineer specializing in AWS, Terraform, and Python.',
+    description: 'CS student in 8th semester. Building web applications and open to all opportunities.',
   },
   robots: {
     index: true,
