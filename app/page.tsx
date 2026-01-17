@@ -6,7 +6,7 @@ import MusicPlayer from '@/components/MusicPlayer'
 
 export const metadata: Metadata = {
   title: 'Mayank Singh Dhami - Cloud Engineer & Computer Science Student',
-  description: 'Cloud Engineer specializing in AWS, Terraform, and Python. Building scalable infrastructure and modern applications with AI-powered development.',
+  description: 'Cloud Engineer specializing in AWS, Terraform, and Python. Building infrastructure and web applications.',
 }
 
 export default function Home() {

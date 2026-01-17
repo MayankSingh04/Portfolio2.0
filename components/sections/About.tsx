@@ -31,25 +31,25 @@ const About = () => {
     {
       icon: Cloud,
       title: "Cloud Infrastructure",
-      description: "Proficient in AWS services, Terraform automation, and scalable architecture design.",
+      description: "Working with AWS services, Terraform for infrastructure as code, and designing systems that can scale.",
       color: "from-slate-600 to-gray-700"
     },
     {
       icon: Brain,
-      title: "AI-Augmented Development",
-      description: "Leveraging AI tools to accelerate development workflows and focus on core infrastructure logic.",
+      title: "Development Tools",
+      description: "Using modern tools to speed up development so I can focus on solving actual problems.",
       color: "from-gray-600 to-slate-700"
     },
     {
       icon: Sparkles,
-      title: "Analytical Mindset",
-      description: "Applied risk management and analytical thinking from trading to technical solutions.",
+      title: "Problem Solving",
+      description: "Trading taught me to think about risk and systems. I apply that mindset to technical challenges.",
       color: "from-zinc-600 to-gray-700"
     },
     {
       icon: Zap,
-      title: "Security First",
-      description: "Building secure, compliant infrastructure with automated security.",
+      title: "Security Focus",
+      description: "Building infrastructure with security in mind from the start, not as an afterthought.",
       color: "from-neutral-600 to-slate-700"
     }
   ]
@@ -83,10 +83,10 @@ const About = () => {
           </motion.div>
           
           <h2 className="text-2xl sm:text-4xl md:text-6xl font-light text-white mb-4 sm:mb-6">
-            Building the <span className="text-white font-medium">Future</span> from code to Cloud.
+            From code to <span className="text-white font-medium">cloud</span>, and everything in between.
           </h2>
           <p className="text-base sm:text-lg text-white/60 max-w-3xl mx-auto leading-relaxed font-light px-4">
-            A passionate Computer Science student and Cloud Engineer focused on building scalable infrastructure solutions that drive real business value.
+            CS student who got into cloud engineering a couple years ago. I build infrastructure with AWS and Terraform, write Python, and occasionally trade when I'm not coding.
           </p>
         </motion.div>
 
@@ -141,12 +141,12 @@ const About = () => {
               
               <CardContent className="p-4 sm:p-8">
                 <p className="text-gray-300 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
-                  I'm a Computer Science student passionate about cloud infrastructure and AI-augmented development. 
-                  My journey combines academic excellence with hands-on experience in building scalable AWS solutions using Terraform and Python.
+                  I'm a CS student who discovered cloud engineering in 2024 and got hooked. Since then, I've been building projects with AWS, 
+                  learning Terraform, and writing Python. I like building things that actually work and can handle real traffic.
                 </p>
                 <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                  With a strong foundation in trading and risk management, I bring analytical thinking to technical solutions, 
-                  focusing on security-first approaches and automated infrastructure deployment.
+                  I also trade (forex, crypto, options) which has taught me a lot about risk management and thinking through systems. 
+                  That perspective helps when I'm designing infrastructure or debugging production issues.
                 </p>
               </CardContent>
             </Card>
@@ -210,10 +210,10 @@ const About = () => {
               <span className="text-blue-400">cat journey.txt</span>
             </div>
             <div className="text-slate-300 ml-4">
-              <div>In my B.Tech CSE journey, I’ve: Built projects ranging from lexical analyzers to expense trackers and cloud-based apps.Explored AWS, DevOps, and backend engineering, strengthening my foundation in scalable solutions.Balanced academics with self-learning and real-world projects, sharpening problem-solving and adaptability.</div>
-              <div>Discovered cloud computing in 2024</div>
-              <div>Built first AWS project in 2024</div>
-              <div>Currently mastering Terraform & AI tools</div>
+              <div>In my B.Tech journey, I've built: lexical analyzers, expense trackers, cloud apps, and a bunch of other stuff.</div>
+              <div>Got into AWS and DevOps in 2024, been learning ever since.</div>
+              <div>Built my first real AWS project in 2024 using Terraform.</div>
+              <div>Currently working on getting better at Terraform and building more complex systems.</div>
             </div>
             <div className="flex items-center mt-4">
               <span className="text-green-400 mr-2">$</span>

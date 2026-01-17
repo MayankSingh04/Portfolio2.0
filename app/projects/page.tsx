@@ -5,7 +5,7 @@ import PageNavigation from '@/components/PageNavigation'
 
 export const metadata: Metadata = {
   title: 'Projects - Mayank Singh Dhami',
-  description: 'Discover the innovative projects and case studies by Mayank Singh Dhami, showcasing expertise in cloud infrastructure, data processing, and modern web applications.',
+  description: 'Projects by Mayank Singh Dhami - cloud infrastructure, data pipelines, and web applications built with AWS, Terraform, and Python.',
 }
 
 export default function ProjectsPage() {
@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       <div className="ml-0 sm:ml-20">
         <PageNavigation 
           title="Projects" 
-          subtitle="Innovative solutions and case studies" 
+          subtitle="Things I've built" 
           theme="dark"
         />
         <div className="pt-4 sm:pt-8">

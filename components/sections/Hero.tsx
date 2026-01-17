@@ -84,7 +84,7 @@ const Hero = () => {
 
               {/* Subtitle */}
               <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl">
-                Building scalable infrastructure solutions and modern applications that drive real business value.
+                Building cloud infrastructure and web apps. Currently a CS student learning AWS, Terraform, and whatever else catches my interest.
               </p>
             </motion.div>
           </div>

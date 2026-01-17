@@ -42,12 +42,12 @@ const Experience = () => {
   const tradingExperience = {
     period: "Jan 2022 – Present",
     title: "Trading Experience (Forex, Crypto, and Options)",
-    description: "Hands-on analysis of market trends, risk management, and trade execution. Practical understanding of equities, commodities, derivatives, and digital assets.",
+    description: "Trading forex, crypto, and options. Learning to read markets, manage risk, and make decisions under uncertainty.",
     achievements: [
-      "Applied technical and fundamental analysis for informed decisions",
-      "Developed risk management strategies for portfolio protection",
-      "Domain knowledge relevant to fintech systems and algorithmic trading",
-      "Experience with real-time data analysis and market sentiment"
+      "Using technical and fundamental analysis to make trading decisions",
+      "Building risk management strategies to protect capital",
+      "Understanding how financial markets and trading systems work",
+      "Working with real-time data and market analysis tools"
     ]
   }
 
@@ -92,7 +92,7 @@ const Experience = () => {
             My <span className="gradient-text">Journey</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            From academic foundations to practical trading experience, building a unique perspective on technology and markets.
+            CS student, cloud engineer, and trader. These experiences shape how I approach problems and build things.
           </p>
         </motion.div>
 
@@ -255,8 +255,8 @@ const Experience = () => {
               Ready to collaborate?
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              I'm open to full-time opportunities in Cloud Engineering, DevOps, and related roles. 
-              Let's build something amazing together.
+              Looking for full-time opportunities in Cloud Engineering, DevOps, and similar roles. 
+              Always interested in working on interesting problems.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Badge variant="cloud" className="text-sm px-4 py-2">

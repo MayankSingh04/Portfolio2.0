@@ -139,7 +139,7 @@ const Contact = () => {
             Ready to <span className="bg-gradient-to-r from-gray-400 to-slate-400 bg-clip-text text-transparent">Collaborate?</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            I'm actively seeking opportunities to work with innovative teams on cloud infrastructure and AI-powered solutions.
+            Looking for opportunities to work on cloud infrastructure and interesting technical problems. Open to full-time roles or interesting projects.
           </p>
         </motion.div>
 
@@ -269,8 +269,7 @@ const Contact = () => {
               </h3>
             </div>
             <p className="text-slate-300 mb-8 leading-relaxed text-lg max-w-2xl mx-auto">
-              I'm passionate about cloud infrastructure and always excited to work on challenging projects. 
-              Whether you need help with AWS, Terraform, or want to discuss AI-augmented development, I'm here to help.
+              I enjoy working on cloud infrastructure and solving technical problems. If you need help with AWS, Terraform, or just want to chat about building things, feel free to reach out.
             </p>
             
             {/* Quick Stats */}
