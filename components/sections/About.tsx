@@ -5,12 +5,6 @@ import { useInView } from 'react-intersection-observer'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { 
-  Cloud, 
-  Zap, 
-  Brain,
-  Sparkles,
-  Terminal,
-  ChevronRight,
   User,
   MapPin,
   Calendar,
@@ -25,34 +19,6 @@ const About = () => {
 
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
-
-
-  const highlights = [
-    {
-      icon: Cloud,
-      title: "Full-Stack Development",
-      description: "Building web applications, working with cloud infrastructure, and writing code across different technologies.",
-      color: "from-slate-600 to-gray-700"
-    },
-    {
-      icon: Brain,
-      title: "Development Tools",
-      description: "Using modern tools to speed up development so I can focus on solving actual problems.",
-      color: "from-gray-600 to-slate-700"
-    },
-    {
-      icon: Sparkles,
-      title: "Problem Solving",
-      description: "Trading taught me to think about risk and systems. I apply that mindset to technical challenges.",
-      color: "from-zinc-600 to-gray-700"
-    },
-    {
-      icon: Zap,
-      title: "Security Focus",
-      description: "Building infrastructure with security in mind from the start, not as an afterthought.",
-      color: "from-neutral-600 to-slate-700"
-    }
-  ]
 
   return (
     <section id="about" className="py-20 bg-black relative overflow-hidden">
@@ -91,7 +57,7 @@ const About = () => {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-16 items-center mb-12 sm:mb-20">
+        <div className="grid lg:grid-cols-1 gap-8 sm:gap-16 items-center mb-12 sm:mb-20">
           {/* Left Side - Personal Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -134,7 +100,7 @@ const About = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Calendar className="h-5 w-5 text-gray-400" />
-                    <span className="text-gray-300">7th Semester</span>
+                    <span className="text-gray-300">8th Semester</span>
                   </div>
                 </div>
               </div>
@@ -152,76 +118,7 @@ const About = () => {
             </Card>
 
           </motion.div>
-
-          {/* Right Side - Highlights */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="space-y-4 sm:space-y-6"
-          >
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 text-center lg:text-left">What I Do Best</h3>
-            
-            {highlights.map((highlight, index) => (
-              <motion.div
-                key={highlight.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
-                whileHover={{ x: 10 }}
-                className="group"
-              >
-                <Card className="p-4 sm:p-6 bg-gray-900 border border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-l-4 group-hover:border-blue-500">
-                  <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className={`p-2 sm:p-3 rounded-xl bg-gradient-to-r ${highlight.color} shadow-lg flex-shrink-0`}>
-                      <highlight.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-base sm:text-lg font-semibold text-white mb-2">{highlight.title}</h4>
-                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{highlight.description}</p>
-                    </div>
-                    <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-300 flex-shrink-0" />
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
-
-        {/* Terminal Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-slate-900 rounded-2xl p-8 shadow-2xl"
-        >
-          <div className="flex items-center space-x-2 mb-6">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            </div>
-            <span className="text-slate-300 text-sm font-mono ml-4">mayank@cloud-engineer:~</span>
-          </div>
-          
-          <div className="font-mono text-sm space-y-2">
-            <div className="flex items-center">
-              <span className="text-green-400 mr-2">$</span>
-              <span className="text-blue-400">cat journey.txt</span>
-            </div>
-            <div className="text-slate-300 ml-4">
-              <div>In my B.Tech journey, I've built: lexical analyzers, expense trackers, cloud apps, and a bunch of other stuff.</div>
-              <div>Got into AWS and DevOps in 2024, been learning ever since.</div>
-              <div>Built my first real AWS project in 2024 using Terraform.</div>
-              <div>Currently working on getting better at Terraform and building more complex systems.</div>
-            </div>
-            <div className="flex items-center mt-4">
-              <span className="text-green-400 mr-2">$</span>
-              <span className="text-blue-400">./connect.sh</span>
-            </div>
-            <div className="text-green-400 ml-4">Ready to collaborate on real world problem solving projects!</div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
