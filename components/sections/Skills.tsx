@@ -110,7 +110,7 @@ const Skills = () => {
           </motion.div>
           
           <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
-            Core <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Technologies</span>
+            Core <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Technologies</span>
           </h2>
           <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
             Working with cloud infrastructure, modern development tools, and trying to write code that doesn't break in production.
